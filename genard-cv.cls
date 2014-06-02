@@ -43,6 +43,8 @@
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
 
+\color{gray}
+
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
@@ -59,13 +61,13 @@
 % \defaultfontfeatures{Mapping=tex-text}
 % \setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue Light}
 
-%\setmathfont{XITS Math}
+% \setmathfont{XITS Math}
 
 % %%%%%%%%%%
 % % Header %
 % %%%%%%%%%%
 
-\RequirePackage{tikz}
+% \RequirePackage{tikz}
 
 % \newcommand{\rolefont}{%
 %   \fontsize{14pt}{24pt}\selectfont%
@@ -89,7 +91,9 @@
 %   \vspace{-2\parskip}
 % }
 
-\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage[absolute,overlay,showboxes]{textpos}
+\RequirePackage{graphicx}
+
 % \RequirePackage{mdframed}
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
@@ -98,6 +102,16 @@
   % \renewcommand{\section}[1]{
   %   \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
   % }
+    \newcommand{\photo}[1]{
+    bar
+    \begin{textblock}{7.0}(0, 0)
+    \textblockcolour{red}
+      \includegraphics[width=2.5cm]{##1}
+      \end{textblock}
+    }
+  
+
+  
   \newcommand{\profession}[1]{
     % \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
     % \newline
@@ -114,12 +128,50 @@
   \begin{flushright}
   {\Huge \bfseries #1}
   % \obeycr
+
 }{%
   % \restorecr
   \end{flushright}
   \end{textblock}
   \let\section\oldsection
 
+}
+
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\newenvironment{header1}[2]{%
+
+  % Photo
+  \newcommand{\photo}[1]{
+    \begin{textblock}{3.0}(1, 0.5)
+        \centering
+        \includegraphics[width=3cm]{##1}
+    \end{textblock}
+  }
+
+  % Name
+  \begin{textblock}{10.0}(5, 1.5)
+    \begin{centering}
+
+      \Huge \bfseries #1\\\vspace{0.5cm}
+      \hfill #2 \hfill
+    \end{centering}
+
+  \end{textblock}
+
+  % Contact
+  \begin{textblock}{5.0}(15.5, 0.5)
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua.
+  \end{textblock}
+
+\newcommand{\profession}[1]{
+  \begin{textblock}{21.0}(0, 5)
+      {\hfill \Large  \bfseries ##1 \hfill}   
+  \end{textblock}
+  }
+
+}{%
 }
 
 \newenvironment{contact}{%
@@ -141,39 +193,39 @@
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
-\RequirePackage{parskip}
+% \RequirePackage{parskip}
 
-\newcounter{colorCounter}
-\def\@sectioncolor#1#2#3{%
-  {%
-    \color{%
-      \ifcase\value{colorCounter}%
-        blue\or%
-        red\or%
-        orange\or%
-        green\or%
-        purple\or%
-        brown\else%
-        headercolor\fi%
-    } #1#2#3%
-  }%
-  \stepcounter{colorCounter}%
-}
+% \newcounter{colorCounter}
+% \def\@sectioncolor#1#2#3{%
+%   {%
+%     \color{%
+%       \ifcase\value{colorCounter}%
+%         blue\or%
+%         red\or%
+%         orange\or%
+%         green\or%
+%         purple\or%
+%         brown\else%
+%         headercolor\fi%
+%     } #1#2#3%
+%   }%
+%   \stepcounter{colorCounter}%
+% }
 
-\renewcommand{\section}[1]{
-  \par\vspace{\parskip}
-  {%
-    \LARGE\headingfont\color{headercolor}%
-    \@sectioncolor #1%
-  }
-  \par\vspace{\parskip}
-}
+% \renewcommand{\section}[1]{
+%   \par\vspace{\parskip}
+%   {%
+%     \LARGE\headingfont\color{headercolor}%
+%     \@sectioncolor #1%
+%   }
+%   \par\vspace{\parskip}
+% }
 
-\renewcommand{\subsection}[2]{
-  \par\vspace{.5\parskip}%
-  \Large\headingfont\color{headercolor} #2%
-  \par\vspace{.25\parskip}%
-}
+% \renewcommand{\subsection}[2]{
+%   \par\vspace{.5\parskip}%
+%   \Large\headingfont\color{headercolor} #2%
+%   \par\vspace{.25\parskip}%
+% }
 
 \pagestyle{empty}
 
@@ -210,12 +262,34 @@
   \renewcommand{\section}[1]{
     \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
   }
-  \begin{textblock}{3.6}(1.5, 4.33)
+  \begin{textblock}{3.6}(17.0, 6)
   \begin{flushright}
   \obeycr
 }{%
   \restorecr
   \end{flushright}
+  \end{textblock}
+  \let\section\oldsection
+}
+
+%%%%%%%%
+% Body %
+%%%%%%%%
+
+\RequirePackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\newenvironment{body}{%
+  \let\oldsection\section
+  \renewcommand{\section}[1]{
+    \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+  }
+  \begin{textblock}{16}(0.5, 6)
+  \begin{flushleft}
+  \obeycr
+}{%
+  \restorecr
+  \end{flushleft}
   \end{textblock}
   \let\section\oldsection
 }
@@ -357,6 +431,11 @@
 
 \RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
+
+%%%%%%%%%
+% VCard %
+%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%
 % Rating dots %
