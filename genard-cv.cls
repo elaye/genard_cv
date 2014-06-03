@@ -3,7 +3,7 @@
 
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
-  \PassOptionsToClass{\CurrentOption}{article}%
+	\PassOptionsToClass{\CurrentOption}{article}%
 }
 \ProcessOptions\relax
 \LoadClass{article}
@@ -26,11 +26,11 @@
 \definecolor{verylightgray}{HTML}{F7F7F7}
 
 \ifdefined\@cv@print
-  \colorlet{fillheader}{white}
-  \colorlet{header}{gray}
+	\colorlet{fillheader}{white}
+	\colorlet{header}{gray}
 \else
-  \colorlet{fillheader}{gray}
-  \colorlet{header}{white}
+	\colorlet{fillheader}{gray}
+	\colorlet{header}{white}
 \fi
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
@@ -57,58 +57,55 @@
 \setlength{\TPVertModule}{1cm}
 \newenvironment{header}[2]{%
 
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[yshift=-6cm] at (current page.north west) {%
-        \begin{tikzpicture}[remember picture, overlay]
-          \fill[verylightgray] (0,0) rectangle (21cm,6cm);
-         \end{tikzpicture}
-          };
-     \end{tikzpicture}
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[yshift=-6cm] at (current page.north west) {%
+			\begin{tikzpicture}[remember picture, overlay]
+				\fill[verylightgray] (0,0) rectangle (21cm,6cm);
+			\end{tikzpicture}
+		};
+	 \end{tikzpicture}
 
-    % Photo
-    \newcommand{\photo}[1]{
-      \begin{textblock}{3.0}(1, 0.5)
-          \includegraphics[width=3cm]{##1}
-      \end{textblock}
-    }
+	% Photo
+	\newcommand{\photo}[1]{
+		\begin{textblock}{3.0}(1, 0.5)
+				\includegraphics[width=3cm]{##1}
+		\end{textblock}
+	}
 
-    % Name
-    \begin{textblock}{10.0}(5, 1.5)
+	% Name
+	\begin{textblock}{10.0}(5, 1.5)
+			\centering
+			\Huge\bfseries #1\\\vspace{0.2cm}
+			#2
+	\end{textblock}
 
-      \begin{centering}
-        {\Huge \bfseries #1\\\vspace{0.5cm}
-        \hfill #2 \hfill}
-      \end{centering}
+	% Profession
+	\newcommand{\profession}[1]{
+		\begin{textblock}{21.0}(0, 5)
+				{\hfill \Large  \bfseries ##1 \hfill}   
+		\end{textblock}
+	}
 
-    \end{textblock}
-
-    % Profession
-    \newcommand{\profession}[1]{
-      \begin{textblock}{21.0}(0, 5)
-          {\hfill \Large  \bfseries ##1 \hfill}   
-      \end{textblock}
-    }
-
-        % Contact
-    \begin{textblock}{7.0}(13, 0.5)
+	% Contact
+	\begin{textblock}{7.0}(13, 0.5)
 }{%
-    \end{textblock}
+	\end{textblock}
 }
 
 \newenvironment{contact}{%
-  \newcommand{\addinfo}[2]{%
-    % \pill{##1} & \shortstack{##2}\\%
-    \parbox{2cm}{\raggedleft ##1} & \parbox{7cm}{\raggedright ##2}\\%
-  }
-  \begin{tabular}{c|c}
+	\newcommand{\addinfo}[2]{%
+		% \pill{##1} & \shortstack{##2}\\%
+		\parbox{2cm}{\raggedleft ##1} & \parbox{7cm}{\raggedright ##2}\\%
+	}
+	\begin{tabular}{c|c}
 }{%
-  \end{tabular}
+	\end{tabular}
 }
 
 \newcommand{\pill}[1]{%
-  \begin{tikzpicture}
-  \node (a1) [rectangle, rounded corners, fill] {#1};
-  \end{tikzpicture}
+	\begin{tikzpicture}
+	\node (a1) [rectangle, rounded corners, fill] {#1};
+	\end{tikzpicture}
 }
 
 %%%%%%%%%
@@ -116,16 +113,16 @@
 %%%%%%%%%
 
 \newenvironment{about}{%
-  \def\arraystretch{0.5}%
-  \par\vspace{\baselineskip}{\Large\bfseries\color{headercolor} About}
-  \noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
-  \newcommand{\addinfo}[2]{%
-    % \pill{##1} & \shortstack{##2}\\%
-    \parbox{2cm}{\bfseries\raggedright ##1:} & \parbox{3 cm}{\raggedright ##2}\\%
-  }
-  \begin{tabular}{cc}
+	\def\arraystretch{0.5}%
+	\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor} About}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	\newcommand{\addinfo}[2]{%
+		% \pill{##1} & \shortstack{##2}\\%
+		\parbox{2cm}{\bfseries\raggedright ##1:} & \parbox{3 cm}{\raggedright ##2}\\%
+	}
+	\begin{tabular}{cc}
 }{%
-  \end{tabular}
+	\end{tabular}
 }
 
 % %%%%%%%%%%%%%%
@@ -136,18 +133,18 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-  \let\oldsection\section
-  \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-  }
-  \begin{textblock}{5}(15.5, 6)
-  \begin{flushleft}
-  \obeycr
+	\let\oldsection\section
+	\renewcommand{\section}[1]{
+		\par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+	}
+	\begin{textblock}{5}(15.5, 6)
+	\begin{flushleft}
+	\obeycr
 }{%
-  \restorecr
-  \end{flushleft}
-  \end{textblock}
-  \let\section\oldsection
+	\restorecr
+	\end{flushleft}
+	\end{textblock}
+	\let\section\oldsection
 }
 
 %%%%%%%%
@@ -158,23 +155,26 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{body}{%
-  \newcommand{\cat}[1]{
-    % \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-    \par\vspace{\baselineskip}{\Large\bfseries\color{headercolor} ##1}
-    \noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
-  }
-  \newcommand{\entry}[2]{
-    % \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-    {\large\bfseries\color{headercolor} ##1}
-    {\color{headercolor} ##2}\\
-  }
-  \begin{textblock}{14.5}(0.5, 6)
-  \begin{flushleft}
-  % \obeycr
+	\newcommand{\cat}[1]{
+		% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+		% \begin{tikzpicture}[overlay]
+		\tikz[overlay] \draw[gray] (0,-0.72) circle (10pt);
+		% \end{tikzpicture}
+		\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor} ~~~##1}\vspace{-0.2cm}
+		\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	}
+	\newcommand{\entry}[2]{
+		% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+		{\large\bfseries\color{headercolor} ##1}
+		{\color{headercolor} ##2}\\
+	}
+	\begin{textblock}{14.5}(0.5, 6)
+	\begin{flushleft}
+	% \obeycr
 }{%
-  % \restorecr
-  \end{flushleft}
-  \end{textblock}
+	% \restorecr
+	\end{flushleft}
+	\end{textblock}
 }
 
 %%%%%%%%%
@@ -188,24 +188,24 @@
 \RequirePackage{pgffor}
 \RequirePackage{wasysym}
 \newcommand{\dotrating}[1]{
-  \foreach \n in {1,...,5}{%
-    \ifnum\n>#1%
-      \fullmoon%
-    \else%
-      \newmoon%
-    \fi%
-    ~
-  }
+	\foreach \n in {1,...,5}{%
+		\ifnum\n>#1%
+			\fullmoon%
+		\else%
+			\newmoon%
+		\fi%
+		~
+	}
 }
 
 \newenvironment{skillgroup}[1]{%
 #1
-  \newcommand{\skill}[2]{
-    ##1 & \dotrating{##2}\\
-  }
-  \begin{tabular}{ll}
+	\newcommand{\skill}[2]{
+		##1 & \dotrating{##2}\\
+	}
+	\begin{tabular}{ll}
 }{%
-  \end{tabular}
+	\end{tabular}
 }
 
 % %%%%%%%%%%%%%%%%
