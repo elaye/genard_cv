@@ -2,38 +2,37 @@
 \usepackage[utf8]{inputenc}
 
 \begin{document}
-	
-% \begin{header}{Elie Génard}
-% 	\photo{sample.png}
-% 	\begin{contact}
-% 		\addinfo{Email}{elie.genard@phelma.grenoble-inp.fr}
-% 		\addinfo{Phone}{(+33) 6 74 33 63 10}
-% 		\addinfo{Adress}{12 rue des Augustins\\33000 Bordeaux}
-% 	\end{contact}
-% 	\profession{Engineer}
 
-% \end{header}
-
-\begin{header1}{Elie}{Génard}
+\begin{header}{Foo}{Bar}
 \photo{sample.png}
 \profession{Engineer}
-\end{header1}
+
+	\begin{contact}
+		\addinfo{Email}{\href{mailto:foo.bar@foobar.com}{foo.bar@foobar.com}}
+		\addinfo{Phone}{(+33) 6 33 33 33 33}
+		\addinfo{Adress}{37 rue des Augustins\\33000 Bordeaux}
+	\end{contact}
+
+\end{header}
 
 \begin{body}
-	% \section{a}
+	\cat{Expérience professionnelle}
+		\entry{Stagiaire ingénieur}{résumé vidéo scalables}
+		\entry{Stagiaire ingénieur}{détection de pas pour la navigation piétonne}
+
+	\cat{Formation}
 \end{body}
 
 \begin{aside}
-	\href{mailto:john@smith.com}{john@smith.com}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	% \dotrating{3}
-	\skill{C++}{3}
-	\skill{Javascript}{2}
+	\begin{about}
+		\addinfo{Né le}{28/03/1990}
+		\addinfo{Age}{24 ans}
+		\addinfo{Disponibilité}{temps plein}
+	\end{about}
+	\begin{skillgroup}{}
+		\skill{C++}{3}
+		\skill{Javascript}{2}
+	\end{skillgroup}
 \end{aside}
 
 \end{document}
