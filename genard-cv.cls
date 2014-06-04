@@ -43,6 +43,34 @@
 
 \renewcommand{\familydefault}{\sfdefault}
 
+
+
+\RequirePackage[quiet]{fontspec}
+% \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+
+% \newfontfamily\bodyfont[]{Helvetica Neue}
+% \newfontfamily\thinfont[]{Helvetica Neue UltraLight}
+% \newfontfamily\headingfont[]{Helvetica Neue Condensed Bold}
+
+% \defaultfontfeatures{Mapping=tex-text}
+% \setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue}
+
+\RequirePackage{fontawesome}
+
+%%%%%%%%%%%%%
+% Structure %
+%%%%%%%%%%%%%
+
+\renewcommand{\section}[1]{
+	\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor}#1}\vspace{-0.2cm}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+}
+
+\newcommand{\iconsection}[2]{
+	\par\vspace{\baselineskip}#1 {\Large\bfseries\color{headercolor}#2}\vspace{-0.2cm}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+}
+
 %%%%%%%%%%
 % Header %
 %%%%%%%%%%
@@ -113,13 +141,13 @@
 %%%%%%%%%
 
 \newenvironment{about}{%
+	\iconsection{\faInfoSign}{About}%
 	\def\arraystretch{0.5}%
-	\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor} About}
-	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
 	\newcommand{\addinfo}[2]{%
 		% \pill{##1} & \shortstack{##2}\\%
 		\parbox{2cm}{\bfseries\raggedright ##1:} & \parbox{3 cm}{\raggedright ##2}\\%
 	}
+
 	\begin{tabular}{cc}
 }{%
 	\end{tabular}
@@ -133,10 +161,6 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-	\let\oldsection\section
-	\renewcommand{\section}[1]{
-		\par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-	}
 	\begin{textblock}{5}(15.5, 6)
 	\begin{flushleft}
 	\obeycr
@@ -144,7 +168,6 @@
 	\restorecr
 	\end{flushleft}
 	\end{textblock}
-	\let\section\oldsection
 }
 
 %%%%%%%%
@@ -155,13 +178,11 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{body}{%
-	\newcommand{\cat}[1]{
-		% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-		% \begin{tikzpicture}[overlay]
-		\tikz[overlay] \draw[gray] (0,-0.72) circle (10pt);
-		% \end{tikzpicture}
-		\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor} ~~~##1}\vspace{-0.2cm}
-		\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	\newcommand{\experience}[1]{
+		\iconsection{\faCogs}{##1}
+	}
+	\newcommand{\education}[1]{
+		\iconsection{\faBook}{##1}
 	}
 	\newcommand{\entry}[2]{
 		% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
