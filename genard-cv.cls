@@ -36,24 +36,13 @@
 \colorlet{headercolor}{gray}
 
 \color{gray}
+\AtBeginDocument{\color{gray}\global\let\default@color\current@color}
 
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
 
 \renewcommand{\familydefault}{\sfdefault}
-
-
-
-\RequirePackage[quiet]{fontspec}
-% \RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
-
-% \newfontfamily\bodyfont[]{Helvetica Neue}
-% \newfontfamily\thinfont[]{Helvetica Neue UltraLight}
-% \newfontfamily\headingfont[]{Helvetica Neue Condensed Bold}
-
-% \defaultfontfeatures{Mapping=tex-text}
-% \setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue}
 
 \RequirePackage{fontawesome}
 
@@ -63,12 +52,12 @@
 
 \renewcommand{\section}[1]{
 	\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor}#1}\vspace{-0.2cm}
-	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}\vspace{-0.3cm}
 }
 
 \newcommand{\iconsection}[2]{
 	\par\vspace{\baselineskip}#1 {\Large\bfseries\color{headercolor}#2}\vspace{-0.2cm}
-	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}\vspace{-0.4cm}
 }
 
 %%%%%%%%%%
@@ -186,9 +175,11 @@
 	}
 	\newcommand{\entry}[2]{
 		% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-		{\large\bfseries\color{headercolor} ##1}
-		{\color{headercolor} ##2}\\
+		\par\vspace{0.2cm}{\color{headercolor}\MakeUppercase{##1}}%\vspace{0.2cm}
+		% {\large\bfseries\color{headercolor} ##1}
+		\par\vspace{-0.1cm}{\color{headercolor} ##2}\\
 	}
+
 	\begin{textblock}{14.5}(0.5, 6)
 	\begin{flushleft}
 	% \obeycr
