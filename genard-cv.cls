@@ -67,8 +67,9 @@
 \RequirePackage[absolute,overlay]{textpos}
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
+\RequirePackage{pdfpages}
 \RequirePackage{tikz}
-\usetikzlibrary{positioning,backgrounds}
+\usetikzlibrary{positioning,backgrounds,shadows.blur}
 
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
@@ -85,7 +86,13 @@
 	% Photo
 	\newcommand{\photo}[1]{
 		\begin{textblock}{3.0}(1, 0.5)
-				\includegraphics[width=3cm]{##1}
+			% \begin{tikzpicture}
+			% 	\node[blur shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=3cm]{##1}};
+			% \end{tikzpicture}
+			% \includegraphics[width=3cm]{##1}
+			% \includegraphics{photo/photo.pdf}
+			% \includepdf[pages=-]{photo/photo.pdf}
+			% \includegraphics{photo/photo.pdf}
 		\end{textblock}
 	}
 
@@ -200,7 +207,7 @@
 \RequirePackage{pgffor}
 \RequirePackage{wasysym}
 \newcommand{\dotrating}[1]{
-	\foreach \n in {1,...,5}{%
+	\foreach \n in {1,...,4}{%
 		\ifnum\n>#1%
 			\fullmoon%
 		\else%
@@ -215,9 +222,20 @@
 	\newcommand{\skill}[2]{
 		##1 & \dotrating{##2}\\
 	}
-	\begin{tabular}{ll}
+	\begin{tabular}{rl}
 }{%
 	\end{tabular}
+}
+
+\RequirePackage{colortbl}
+
+\newcommand{\skillscaption}{
+	\begin{tabular}{rl}
+		\rowcolor{verylightgray} Beginner & \dotrating{1}\\
+		\rowcolor{verylightgray} Intermediate & \dotrating{2}\\
+		\rowcolor{verylightgray} Advanced & \dotrating{3}\\
+		\rowcolor{verylightgray} Expert & \dotrating{4}\\
+	\end{tabular}	
 }
 
 % %%%%%%%%%%%%%%%%
@@ -226,4 +244,4 @@
 
 % \RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage[left=0cm,top=0cm,right=0cm,bottom=0cm,nohead,nofoot]{geometry}
-\RequirePackage{hyperref}
+\RequirePackage[colorlinks=false, pdfborder={0 0 0}, hidelinks]{hyperref}
