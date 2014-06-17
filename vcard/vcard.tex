@@ -1,13 +1,46 @@
-\documentclass{article}
+%!TEX program = xelatex
+\documentclass{standalone}
 
-\usepackage{auto-pst-pdf}
+% \usepackage{auto-pst-pdf}
+% \usepackage{pst-barcode}
+
+
+% \begin{document}
+
+% \begin{pspicture}[showgrid=false](1.49,1.49)% I got this value by inspection (zooming up to 1000%)
+%     \psbarcode{tug.org}{}{qrcode}
+% \end{pspicture}
+
+% \end{document}
+
 \usepackage{pst-barcode}
 
-
+{\obeylines\gdef^^M{^^J}%
+ \catcode`\@=0 %
+ \catcode`\\=12 %
+ @gdef@n{\n}}
 \begin{document}
 
-\begin{pspicture}[showgrid=false](1.49,1.49)% I got this value by inspection (zooming up to 1000%)
-    \psbarcode{tug.org}{}{qrcode}
-\end{pspicture}
+    \begin{pspicture}(1in,1in)
+    \obeylines
+    \psbarcode{%
+BEGIN:VCARD
+VERSION:3.0
+N:Gump;Forrest
+FN:Forrest Gump
+ORG:Bubba Gump Shrimp Co.
+TITLE:Shrimp Man
+TEL;TYPE=WORK,VOICE:(111) 555-1212
+TEL;TYPE=HOME,VOICE:(404) 555-1212
+ADR;TYPE=WORK:;;100 Waters Edge;Baytown;LA;30314;United States of America
+LABEL;TYPE=WORK:100 Waters Edge\n Baytown, LA 30314\n United States of America
+ADR;TYPE=HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America
+LABEL;TYPE=HOME:42 Plantation St.\n Baytown, LA 30314\n United States of America
+EMAIL;TYPE=PREF,INTERNET:forrestgump@example.com
+REV:20080424T195243Z
+END:VCARD
+}{width=2.0 height=2.0}{qrcode}%
+    \end{pspicture} 
+
 
 \end{document}

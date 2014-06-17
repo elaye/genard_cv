@@ -4,15 +4,26 @@
 
 \begin{document}
 
-\begin{header}{John}{Doe}
-\photo{photo/photo.pdf}
+% Information
+\renewcommand{\firstname}{Elie}
+\renewcommand{\lastname}{Génard}
+\renewcommand{\phone}{+33680514419}
+\renewcommand{\email}{elaye@github.com}
+\renewcommand{\adress}{33 rue des Augustins}
+\renewcommand{\city}{33000 Bordeaux}
+
+\begin{header}
+
+\photo{photo/photo.png}
 \profession{Engineer}
 
 	\begin{contact}
-		\addinfo{Email}{\href{mailto:foo.bar@foobar.com}{foo.bar@foobar.com}}
-		\addinfo{Phone}{(+33) 6 33 33 33 33}
-		\addinfo{Adress}{37 rue des Augustins\\33000 Bordeaux}
+		\addinfo{Email}{\href{mailto:\email}{\email}}
+		\addinfo{Phone}{\phone}
+		\addinfo{Adress}{\adress}
+		\addinfo{}{\city}
 	\end{contact}
+
 
 \end{header}
 

@@ -12,6 +12,19 @@
 
 % \def\mystrut(#1){\vrule height #1cm width 0pt}
 
+%%%%%%%%%%%%%
+% Variables %
+%%%%%%%%%%%%%
+
+% Empty definition to make sure the command doesn't already exists
+\newcommand{\firstname}{}
+\newcommand{\lastname}{}
+\newcommand{\phone}{}
+\newcommand{\email}{}
+\newcommand{\adress}{}
+\newcommand{\city}{}
+
+
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
@@ -73,7 +86,7 @@
 
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
-\newenvironment{header}[2]{%
+\newenvironment{header}{%
 
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[yshift=-6cm] at (current page.north west) {%
@@ -86,9 +99,10 @@
 	% Photo
 	\newcommand{\photo}[1]{
 		\begin{textblock}{3.0}(1, 0.5)
-			% \begin{tikzpicture}
-			% 	\node[blur shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=3cm]{##1}};
-			% \end{tikzpicture}
+		\noindent
+			\begin{tikzpicture}
+				\node[blur shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=3cm]{##1}};
+			\end{tikzpicture}
 			% \includegraphics[width=3cm]{##1}
 			% \includegraphics{photo/photo.pdf}
 			% \includepdf[pages=-]{photo/photo.pdf}
@@ -97,10 +111,10 @@
 	}
 
 	% Name
-	\begin{textblock}{10.0}(5, 1.5)
+	\begin{textblock}{7.0}(5, 1.0)
 			\centering
-			\Huge\bfseries #1\\\vspace{0.2cm}
-			#2
+			\Huge\bfseries \firstname\\\vspace{0.2cm}
+			\lastname
 	\end{textblock}
 
 	% Profession
@@ -111,16 +125,22 @@
 	}
 
 	% Contact
-	\begin{textblock}{7.0}(13, 0.5)
+	\begin{textblock}{6.0}(11, 0.5)
+	
 }{%
+	\end{textblock}
+	\begin{textblock}{3}(17.5, 0.5)
+		\vcard
+		% \Huge ABCDEF
 	\end{textblock}
 }
 
 \newenvironment{contact}{%
-	\newcommand{\addinfo}[2]{%
+	\newcommand{\addinfo}[2]{%\noindent
 		% \pill{##1} & \shortstack{##2}\\%
-		\parbox{2cm}{\raggedleft ##1} & \parbox{7cm}{\raggedright ##2}\\%
+		\parbox{1cm}{\raggedleft\large ##1} & \parbox{4.5cm}{\raggedright\large ##2}\\%
 	}
+	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{c|c}
 }{%
 	\end{tabular}
@@ -128,7 +148,7 @@
 
 \newcommand{\pill}[1]{%
 	\begin{tikzpicture}
-	\node (a1) [rectangle, rounded corners, fill] {#1};
+		\node (a1) [rectangle, rounded corners, fill] {#1};
 	\end{tikzpicture}
 }
 
@@ -200,6 +220,53 @@
 % VCard %
 %%%%%%%%%
 
+\RequirePackage{pst-barcode}
+
+{\obeylines\gdef^^M{^^J}%
+ \catcode`\@=0 %
+ \catcode`\\=12 %
+ @gdef@n{\n}}
+
+% VCard example
+
+% \newcommand{\vcard}{
+% 	\begin{pspicture}(1in,1in)
+%     	\obeylines
+%     	\psbarcode{%
+% BEGIN:VCARD
+% VERSION:3.0
+% N:Gump;Forrest
+% FN:Forrest Gump
+% ORG:Bubba Gump Shrimp Co.
+% TITLE:Shrimp Man
+% TEL;TYPE=WORK,VOICE:(111) 555-1212
+% TEL;TYPE=HOME,VOICE:(404) 555-1212
+% ADR;TYPE=WORK:;;100 Waters Edge;Baytown;LA;30314;United States of America
+% LABEL;TYPE=WORK:100 Waters Edge\n Baytown, LA 30314\n United States of America
+% ADR;TYPE=HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America
+% LABEL;TYPE=HOME:42 Plantation St.\n Baytown, LA 30314\n United States of America
+% EMAIL;TYPE=PREF,INTERNET:forrestgump@example.com
+% REV:20080424T195243Z
+% END:VCARD
+% }{width=2.0 height=2.0}{qrcode}%
+%     \end{pspicture}
+% }
+
+\newcommand{\vcard}{
+	\noindent
+	\begin{pspicture}(3cm,3cm)
+    	\obeylines
+    	\psbarcode[linecolor=darkgray]{%
+BEGIN:VCARD
+VERSION:3.0
+N:\lastname;\firstname
+FN:\firstname \lastname
+TEL;TYPE=WORK,VOICE:\phone
+EMAIL;TYPE=PREF,INTERNET:\email
+END:VCARD
+}{width=1.181 height=1.181}{qrcode}%
+    \end{pspicture}
+}
 
 %%%%%%%%%%%%%%%
 % Rating dots %
