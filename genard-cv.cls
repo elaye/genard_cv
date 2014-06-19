@@ -118,20 +118,18 @@
 	\end{textblock}
 
 	% Profession
-	\newcommand{\profession}[1]{
-		\begin{textblock}{21.0}(0, 5)
-				{\hfill \Large  \bfseries ##1 \hfill}   
-		\end{textblock}
+	\newcommand{\profession}[1]{%
+		\begin{textblock}{21.0}(0, 5)%
+				{\hfill \Large  \bfseries ##1 \hfill}%
+		\end{textblock}%
 	}
 
 	% Contact
 	\begin{textblock}{6.0}(11, 0.5)
-	
 }{%
 	\end{textblock}
 	\begin{textblock}{3}(17.5, 0.5)
 		\vcard
-		% \Huge ABCDEF
 	\end{textblock}
 }
 
@@ -140,7 +138,9 @@
 		% \pill{##1} & \shortstack{##2}\\%
 		\parbox{1cm}{\raggedleft\large ##1} & \parbox{4.5cm}{\raggedright\large ##2}\\%
 	}
-	\renewcommand{\arraystretch}{1.5}
+	\let\arraystretch\oldarraystretch
+	\newcommand{\arraystretch}{1.5}
+	\let\oldarraystretch\arraystretch
 	\begin{tabular}{c|c}
 }{%
 	\end{tabular}
@@ -200,12 +200,12 @@
 	\newcommand{\education}[1]{
 		\iconsection{\faBook}{##1}
 	}
-	\newcommand{\entry}[2]{
-		% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-		\par\vspace{0.2cm}{\color{headercolor}\MakeUppercase{##1}}%\vspace{0.2cm}
-		% {\large\bfseries\color{headercolor} ##1}
-		\par\vspace{-0.1cm}{\color{headercolor} ##2}\\
-	}
+	% \newcommand{\entry}[2]{
+	% 	% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+	% 	\par\vspace{0.2cm}{\color{headercolor}\MakeUppercase{##1}}%\vspace{0.2cm}
+	% 	% {\large\bfseries\color{headercolor} ##1}
+	% 	\par\vspace{-0.1cm}{\color{headercolor} ##2}\\
+	% }
 
 	\begin{textblock}{14.5}(0.5, 6)
 	\begin{flushleft}
@@ -214,6 +214,15 @@
 	% \restorecr
 	\end{flushleft}
 	\end{textblock}
+}
+
+\newenvironment{entry}[4]{%
+	\par\vspace{0.2cm}%
+	\parbox{4cm}{\color{headercolor}#1}%
+	{\color{headercolor}\raggedright\bfseries\large#2}%
+	{\hfill\small\color{headercolor}#3}\\%
+	{\large#4}\\%
+}{%
 }
 
 %%%%%%%%%
@@ -285,13 +294,16 @@ END:VCARD
 }
 
 \newenvironment{skillgroup}[1]{%
+%\begin{flushright}
 #1
 	\newcommand{\skill}[2]{
 		##1 & \dotrating{##2}\\
 	}
-	\begin{tabular}{rl}
+	\renewcommand{\arraystretch}{0.5}
+	\begin{tabular}{rr}
 }{%
 	\end{tabular}
+%\end{flushright}
 }
 
 \RequirePackage{colortbl}
