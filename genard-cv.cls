@@ -354,3 +354,13 @@ END:VCARD
 
 \RequirePackage[left=0cm,top=0cm,right=0cm,bottom=0cm,nohead,nofoot]{geometry}
 \RequirePackage[colorlinks=false, pdfborder={0 0 0}, hidelinks]{hyperref}
+
+\hypersetup{
+  pdfinfo={
+	  pdfproducer={},
+	  Title={CV},
+	  Subject={CV},
+	  Author={Elie Génard https://github.com/elaye},
+	  Keywords={https://github.com/elaye/genard\_cv}
+  }
+}
