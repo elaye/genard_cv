@@ -1,8 +1,7 @@
 %!TEX program = xelatex
-\documentclass[a4paper]{genard-cv}
-% \usepackage[utf8]{inputenc}
 
-\begin{document}
+% Pass 'debug' option to show boxes
+\documentclass[a4paper, debug]{genard-cv}
 
 % Information
 \renewcommand{\firstname}{Elie}
@@ -11,19 +10,20 @@
 \renewcommand{\email}{elaye@github.com}
 \renewcommand{\adress}{33 rue des Augustins}
 \renewcommand{\city}{33000 Bordeaux}
+\renewcommand{\profession}{Engineer}
+
+\begin{document}
 
 \begin{header}
 
 \photo{photo/photo.png}
-\profession{Engineer}
 
-	\begin{contact}
+	\begin{contact}[vcard=false]
 		\addinfo{Email}{\href{mailto:\email}{\email}}
 		\addinfo{Phone}{\phone}
 		\addinfo{Adress}{\adress}
 		\addinfo{}{\city}
 	\end{contact}
-
 
 \end{header}
 
@@ -53,6 +53,16 @@
 			{2008}{Baccalauréat Scientifique}{Barbezieux, France}
 			{Mention Bien}
 		\end{entry}
+
+% \begin{tabular}{|c|c|}
+% 	\hline
+% 	\multirow{4}{1in}{Common g text} & Column g2a\\
+% 	& Column g2b \\
+% 	& Column g2c \\
+% 	& Column g2d \\
+% 	\hline
+% \end{tabular}
+
 \end{body}
 
 \begin{aside}
@@ -60,24 +70,25 @@
 		\addinfo{Né le}{28/03/1990}
 		\addinfo{Age}{24 ans}
 		\addinfo{Disponibilité}{temps plein}
-	\end{about}
-	\begin{skillgroup}{Programming languages}
+	\end{about}\noindent
+	\begin{skillgroup}{Languages}{4}
 		\skill{C++}{3}
 		\skill{Ruby}{3}
+		\skill{Java}{1}
 	\end{skillgroup}
-	\begin{skillgroup}{Web}
+	\begin{skillgroup}{Web}{5}
 		\skill{HTML5}{3}
 		\skill{CSS3}{3}
 		\skill{Javascript}{2}
 		\skill{Ruby on Rails}{2}
 		\skill{Node.js}{2}
 	\end{skillgroup}
-	\begin{skillgroup}{OS}
+	\begin{skillgroup}{OS}{3}
 		\skill{GNU/Linux}{3}
 		\skill{OS X}{2}
 		\skill{Windows}{2}
 	\end{skillgroup}
-	\begin{skillgroup}{Misc}
+	\begin{skillgroup}{Misc}{3}
 		\skill{OpenFrameworks}{3}
 		\skill{\LaTeX}{3}
 		\skill{Photoshop}{3}

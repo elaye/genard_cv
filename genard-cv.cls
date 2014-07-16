@@ -1,7 +1,9 @@
+%!TEX root = cv.tex
 \ProvidesClass{genard-cv}[2014/05/26 CV class]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption{print}{\def\@cv@print{}}
+\DeclareOption{debug}{\def\@cv@debug{}}
 \DeclareOption*{%
 	\PassOptionsToClass{\CurrentOption}{article}%
 }
@@ -23,7 +25,7 @@
 \newcommand{\email}{}
 \newcommand{\adress}{}
 \newcommand{\city}{}
-
+\newcommand{\profession}{}
 
 %%%%%%%%%%
 % Colors %
@@ -33,10 +35,10 @@
 
 \definecolor{white}{RGB}{255,255,255}
 
-\definecolor{darkgray}{HTML}{333333}
-\definecolor{gray}{HTML}{4D4D4D}
-\definecolor{lightgray}{HTML}{999999}
-\definecolor{verylightgray}{HTML}{F7F7F7}
+% \definecolor{darkgray}{HTML}{333333}
+% \definecolor{gray}{HTML}{4D4D4D}
+% \definecolor{lightgray}{HTML}{999999}
+% \definecolor{verylightgray}{HTML}{F7F7F7}
 
 \ifdefined\@cv@print
 	\colorlet{fillheader}{white}
@@ -45,15 +47,17 @@
 	\colorlet{fillheader}{gray}
 	\colorlet{header}{white}
 \fi
-\colorlet{textcolor}{gray}
-\colorlet{headercolor}{gray}
+\colorlet{textcolor}{black!75}
+\colorlet{headercolor}{black!75}
 
-\color{gray}
-\AtBeginDocument{\color{gray}\global\let\default@color\current@color}
+\color{black!75}
+\AtBeginDocument{\color{black!75}\global\let\default@color\current@color}
 
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
+
+\RequirePackage{microtype}
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -77,7 +81,11 @@
 % Header %
 %%%%%%%%%%
 
-\RequirePackage[absolute,overlay]{textpos}
+\ifdefined\@cv@debug
+	\RequirePackage[absolute,overlay,showboxes]{textpos}
+\else
+	\RequirePackage[absolute,overlay]{textpos}
+\fi
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
 \RequirePackage{pdfpages}
@@ -91,7 +99,7 @@
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[yshift=-6cm] at (current page.north west) {%
 			\begin{tikzpicture}[remember picture, overlay]
-				\fill[verylightgray] (0,0) rectangle (21cm,6cm);
+				\fill[black!0] (0,0) rectangle (21cm,6cm);
 			\end{tikzpicture}
 		};
 	 \end{tikzpicture}
@@ -118,32 +126,51 @@
 	\end{textblock}
 
 	% Profession
-	\newcommand{\profession}[1]{%
-		\begin{textblock}{21.0}(0, 5)%
-				{\hfill \Large  \bfseries ##1 \hfill}%
-		\end{textblock}%
-	}
+	% \newcommand{\profession}[1]{%
+	% 	\begin{textblock}{21.0}(0, 5)%
+	% 			{\hfill \Large  \bfseries ##1 \hfill}%
+	% 	\end{textblock}%
+	% }
 
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[yshift=-6.5cm] at (current page.north west){
+			\begin{tikzpicture}[remember picture, overlay]
+				\fill[black!5] (0,0) rectangle (21cm,0.7cm);
+				\node[xshift=10.5cm, yshift=0.35cm](p){\Large \bfseries \profession};
+				% \draw[-] (p.north west) -- (p.north east);
+				\fill[black!7] (0,0) rectangle (21cm,0.07cm);
+				\fill[black!7] (0,0.7cm) rectangle (21cm,0.77cm);
+			\end{tikzpicture}
+		};
+	\end{tikzpicture}
 	% Contact
 	\begin{textblock}{6.0}(11, 0.5)
 }{%
 	\end{textblock}
-	\begin{textblock}{3}(17.5, 0.5)
-		\vcard
-	\end{textblock}
+
+	% \begin{textblock}{3}(17.5, 0.5)
+	% 	\vcard
+	% \end{textblock}
 }
 
-\newenvironment{contact}{%
+\newenvironment{contact}[1][]{%
 	\newcommand{\addinfo}[2]{%\noindent
 		% \pill{##1} & \shortstack{##2}\\%
 		\parbox{1cm}{\raggedleft\large ##1} & \parbox{4.5cm}{\raggedright\large ##2}\\%
 	}
+
 	\let\arraystretch\oldarraystretch
 	\newcommand{\arraystretch}{1.5}
 	\let\oldarraystretch\arraystretch
+
+	\newcommand{\dispvcard}{
+		\ifthenelse{\equal{vcard=true}{#1}}{\vcard}{}
+	}
+	
 	\begin{tabular}{c|c}
 }{%
 	\end{tabular}
+	\dispvcard
 }
 
 \newcommand{\pill}[1]{%
@@ -265,7 +292,7 @@
 	\noindent
 	\begin{pspicture}(3cm,3cm)
     	\obeylines
-    	\psbarcode[linecolor=darkgray]{%
+    	\psbarcode[linecolor=black!15]{%
 BEGIN:VCARD
 VERSION:3.0
 N:\lastname;\firstname
@@ -293,27 +320,44 @@ END:VCARD
 	}
 }
 
-\newenvironment{skillgroup}[1]{%
-%\begin{flushright}
-#1
+\RequirePackage{multirow}
+\RequirePackage{rotating}
+\RequirePackage{ifthen}
+
+\newcounter{skillsNumber}
+
+\newenvironment{skillgroup}[2]{%
+
+	\setcounter{skillsNumber}{0}
+
 	\newcommand{\skill}[2]{
-		##1 & \dotrating{##2}\\
+		\addtocounter{skillsNumber}{1}
+		\ifthenelse{\equal{1}{\value{skillsNumber}}}{
+			\multirow{#2}{*}{
+				\rotatebox{90}{\centering
+					\tiny\uppercase{#1}
+				}
+			}
+		}{}
+		& \parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
 	}
+
 	\renewcommand{\arraystretch}{0.5}
-	\begin{tabular}{rr}
+
+	\begin{tabular}{|r|ll}
 }{%
 	\end{tabular}
-%\end{flushright}
+	% \vspace{0.5cm}
 }
 
 \RequirePackage{colortbl}
 
 \newcommand{\skillscaption}{
 	\begin{tabular}{rl}
-		\rowcolor{verylightgray} Beginner & \dotrating{1}\\
-		\rowcolor{verylightgray} Intermediate & \dotrating{2}\\
-		\rowcolor{verylightgray} Advanced & \dotrating{3}\\
-		\rowcolor{verylightgray} Expert & \dotrating{4}\\
+		\rowcolor{black!0} Beginner & \dotrating{1}\\
+		\rowcolor{black!0} Intermediate & \dotrating{2}\\
+		\rowcolor{black!0} Advanced & \dotrating{3}\\
+		\rowcolor{black!0} Expert & \dotrating{4}\\
 	\end{tabular}	
 }
 
