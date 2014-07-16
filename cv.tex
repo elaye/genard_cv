@@ -1,7 +1,7 @@
 %!TEX program = xelatex
 
 % Pass 'debug' option to show boxes
-\documentclass[a4paper, debug]{genard-cv}
+\documentclass[a4paper]{genard-cv}
 
 % Information
 \renewcommand{\firstname}{Elie}
@@ -21,8 +21,8 @@
 	\begin{contact}[vcard=false]
 		\addinfo{Email}{\href{mailto:\email}{\email}}
 		\addinfo{Phone}{\phone}
-		\addinfo{Adress}{\adress}
-		\addinfo{}{\city}
+		\addinfo{Adress}{\adress \\ \city}
+		% \addinfo{}{\city}
 	\end{contact}
 
 \end{header}
@@ -54,15 +54,6 @@
 			{Mention Bien}
 		\end{entry}
 
-% \begin{tabular}{|c|c|}
-% 	\hline
-% 	\multirow{4}{1in}{Common g text} & Column g2a\\
-% 	& Column g2b \\
-% 	& Column g2c \\
-% 	& Column g2d \\
-% 	\hline
-% \end{tabular}
-
 \end{body}
 
 \begin{aside}
@@ -71,24 +62,24 @@
 		\addinfo{Age}{24 ans}
 		\addinfo{Disponibilité}{temps plein}
 	\end{about}\noindent
-	\begin{skillgroup}{Languages}{4}
+	\begin{skillgroup}{Languages}
 		\skill{C++}{3}
 		\skill{Ruby}{3}
 		\skill{Java}{1}
 	\end{skillgroup}
-	\begin{skillgroup}{Web}{5}
+	\begin{skillgroup}{Web}
 		\skill{HTML5}{3}
 		\skill{CSS3}{3}
 		\skill{Javascript}{2}
 		\skill{Ruby on Rails}{2}
 		\skill{Node.js}{2}
 	\end{skillgroup}
-	\begin{skillgroup}{OS}{3}
+	\begin{skillgroup}{OS}
 		\skill{GNU/Linux}{3}
 		\skill{OS X}{2}
 		\skill{Windows}{2}
 	\end{skillgroup}
-	\begin{skillgroup}{Misc}{3}
+	\begin{skillgroup}{Misc}
 		\skill{OpenFrameworks}{3}
 		\skill{\LaTeX}{3}
 		\skill{Photoshop}{3}

@@ -90,7 +90,7 @@
 \RequirePackage{wrapfig}
 \RequirePackage{pdfpages}
 \RequirePackage{tikz}
-\usetikzlibrary{positioning,backgrounds,shadows.blur}
+\usetikzlibrary{positioning, backgrounds, shadows.blur}
 
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
@@ -155,8 +155,11 @@
 
 \newenvironment{contact}[1][]{%
 	\newcommand{\addinfo}[2]{%\noindent
-		% \pill{##1} & \shortstack{##2}\\%
-		\parbox{1cm}{\raggedleft\large ##1} & \parbox{4.5cm}{\raggedright\large ##2}\\%
+		\noindent\par
+		\begin{tikzpicture}
+			\node[rectangle, rounded corners, fill=black!10] (a) {\parbox{1.5cm}{\raggedleft ##1 :}};
+			\node[anchor=north west, xshift=0.1cm] at (a.north east) {\parbox{6cm}{##2}};
+		\end{tikzpicture}\\\vspace{-0.2cm}%
 	}
 
 	\let\arraystretch\oldarraystretch
@@ -164,19 +167,19 @@
 	\let\oldarraystretch\arraystretch
 
 	\newcommand{\dispvcard}{
-		\ifthenelse{\equal{vcard=true}{#1}}{\vcard}{}
+		\begin{textblock}{4}(17,0.5)
+			\ifthenelse{\equal{vcard=true}{#1}}{\vcard}{}
+		\end{textblock}
 	}
-	
-	\begin{tabular}{c|c}
-}{%
-	\end{tabular}
-	\dispvcard
-}
 
-\newcommand{\pill}[1]{%
-	\begin{tikzpicture}
-		\node (a1) [rectangle, rounded corners, fill] {#1};
-	\end{tikzpicture}
+	\ifthenelse{\equal{vcard=true}{#1}}{
+		\begin{textblock}{4}(11,0.5)
+	}{
+		\begin{textblock}{4}(13,0.5)
+	}
+}{%
+	\end{textblock}
+	\dispvcard
 }
 
 %%%%%%%%%
@@ -188,17 +191,18 @@
 	\def\arraystretch{0.5}%
 	\newcommand{\addinfo}[2]{%
 		% \pill{##1} & \shortstack{##2}\\%
-		\parbox{2cm}{\bfseries\raggedright ##1:} & \parbox{3 cm}{\raggedright ##2}\\%
+		\parbox{2cm}{\bfseries\raggedright ##1} & \parbox{3 cm}{\raggedright ##2}\\%
 	}
 
-	\begin{tabular}{cc}
+	\begin{tabular}{cc}%
 }{%
-	\end{tabular}
+	\end{tabular}%
+	\vspace{0.5cm}%
 }
 
-% %%%%%%%%%%%%%%
-% % Side block %
-% %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+% Side block %
+%%%%%%%%%%%%%%
 
 \RequirePackage[absolute,overlay]{textpos}
 \setlength{\TPHorizModule}{1cm}
@@ -206,9 +210,9 @@
 \newenvironment{aside}{%
 	\begin{textblock}{5}(15.5, 6)
 	\begin{flushleft}
-	\obeycr
+	% \obeycr
 }{%
-	\restorecr
+	% \restorecr
 	\end{flushleft}
 	\end{textblock}
 }
@@ -292,7 +296,7 @@
 	\noindent
 	\begin{pspicture}(3cm,3cm)
     	\obeylines
-    	\psbarcode[linecolor=black!15]{%
+    	\psbarcode[linecolor=black!75]{%
 BEGIN:VCARD
 VERSION:3.0
 N:\lastname;\firstname
@@ -304,67 +308,146 @@ END:VCARD
     \end{pspicture}
 }
 
-%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%
 % Rating dots %
-%%%%%%%%%%%%%%%
-\RequirePackage{pgffor}
-\RequirePackage{wasysym}
-\newcommand{\dotrating}[1]{
-	\foreach \n in {1,...,4}{%
-		\ifnum\n>#1%
-			\fullmoon%
-		\else%
-			\newmoon%
-		\fi%
-		~
-	}
-}
+% %%%%%%%%%%%%%%
 
-\RequirePackage{multirow}
-\RequirePackage{rotating}
-\RequirePackage{ifthen}
+% V1
+% \RequirePackage{pgffor}
+% \RequirePackage{wasysym}
+% \newcommand{\dotrating}[1]{
+% 	\foreach \n in {1,...,4}{%
+% 		\ifnum\n>#1%
+% 			\fullmoon%
+% 		\else%
+% 			\newmoon%
+% 		\fi%
+% 		~
+% 	}
+% }
+
+% \RequirePackage{multirow}
+% \RequirePackage{rotating}
+% \RequirePackage{ifthen}
+
+% \newcounter{skillsNumber}
+
+% \newenvironment{skillgroup}[2]{%
+
+% 	\setcounter{skillsNumber}{0}
+
+% 	\newcommand{\skill}[2]{
+% 		\addtocounter{skillsNumber}{1}
+% 		\ifthenelse{\equal{1}{\value{skillsNumber}}}{
+% 			\multirow{#2}{*}{
+% 				\rotatebox{90}{\centering
+% 					\tiny\uppercase{#1}
+% 				}
+% 			}
+% 		}{}
+% 		& \parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
+% 	}
+
+% 	\renewcommand{\arraystretch}{0.5}
+
+% 	\begin{tabular}{|r|ll}
+% }{%
+% 	\end{tabular}
+% 	% \vspace{0.5cm}
+% }
+
+% \RequirePackage{pgffor}
+% \RequirePackage{wasysym}
+% \newcommand{\dotrating}[1]{
+% 	\foreach \n in {1,...,4}{%
+% 		\ifnum\n>#1%
+% 			\fullmoon%
+% 		\else%
+% 			\newmoon%
+% 		\fi%
+% 		~
+% 	}
+% }
+
+% \RequirePackage{multirow}
+% \RequirePackage{rotating}
+% \RequirePackage{ifthen}
+
+% \newcounter{skillsNumber}
+
+% \newenvironment{skillgroup}[2]{%
+
+% 	\setcounter{skillsNumber}{0}
+
+% 	\newcommand{\skill}[2]{
+% 		% \addtocounter{skillsNumber}{1}
+% 		% \ifthenelse{\equal{1}{\value{skillsNumber}}}{
+% 		% 	\multirow{#2}{*}{
+% 		% 		% \rotatebox{90}{\centering
+% 		% 		% 	\tiny\uppercase{#1}
+% 		% 		% }
+% 		% 	}
+% 		% }{}
+% 		\parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
+% 	}
+
+% 	\renewcommand{\arraystretch}{0.5}
+
+% 	\rotatebox{90}{\llap{\tiny\uppercase{#1}}}%s
+% 	\begin{tabular}{@{}|ll}
+% }{%
+% 	\end{tabular}
+% 	\vspace{0.5cm}
+% }
+
+\RequirePackage{graphicx}
+\RequirePackage{wasysym}
+
+\newcommand{\dotrating}{%
+        \ifnum\count0<\count2 %
+            \newmoon
+        \else
+            \fullmoon
+        \fi
+            \hspace{.5em}%
+         \ifnum\count0<3
+            \advance\count0 1 %
+            \expandafter\dotrating
+         \fi
+}
 
 \newcounter{skillsNumber}
 
-\newenvironment{skillgroup}[2]{%
+\newenvironment{skillgroup}[1]{%
+    \setcounter{skillsNumber}{0}%
+    \newcommand{\skill}[2]{%
+       \parbox{2.5cm}{##1}&\count0=0\count2=##2\relax
+           \dotrating\\%
+    }
+%
+    \renewcommand{\arraystretch}{1.5}%b
 
-	\setcounter{skillsNumber}{0}
-
-	\newcommand{\skill}[2]{
-		\addtocounter{skillsNumber}{1}
-		\ifthenelse{\equal{1}{\value{skillsNumber}}}{
-			\multirow{#2}{*}{
-				\rotatebox{90}{\centering
-					\tiny\uppercase{#1}
-				}
-			}
-		}{}
-		& \parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
-	}
-
-	\renewcommand{\arraystretch}{0.5}
-
-	\begin{tabular}{|r|ll}
+	\rotatebox{90}{\llap{\tiny\uppercase{#1}}}%
+	\begin{tabular}[t]{@{}|ll}%
 }{%
-	\end{tabular}
-	% \vspace{0.5cm}
+    \end{tabular}%
+    \vspace{0.5cm}%
 }
 
 \RequirePackage{colortbl}
 
 \newcommand{\skillscaption}{
 	\begin{tabular}{rl}
-		\rowcolor{black!0} Beginner & \dotrating{1}\\
-		\rowcolor{black!0} Intermediate & \dotrating{2}\\
-		\rowcolor{black!0} Advanced & \dotrating{3}\\
-		\rowcolor{black!0} Expert & \dotrating{4}\\
+		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Beginner} & \count0=0\count2=1\relax\dotrating\\
+		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Intermediate} & \count0=0\count2=2\relax\dotrating\\
+		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Advanced} & \count0=0\count2=3\relax\dotrating\\
+		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Expert} & \count0=0\count2=4\relax\dotrating\\
 	\end{tabular}	
 }
 
-% %%%%%%%%%%%%%%%%
-% % Other tweaks %
-% %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+% Other tweaks %
+%%%%%%%%%%%%%%%%
 
-% \RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage[left=0cm,top=0cm,right=0cm,bottom=0cm,nohead,nofoot]{geometry}
 \RequirePackage[colorlinks=false, pdfborder={0 0 0}, hidelinks]{hyperref}
