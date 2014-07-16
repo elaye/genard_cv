@@ -10,9 +10,9 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
-\pagestyle{empty}
+\RequirePackage{iflang}
 
-% \def\mystrut(#1){\vrule height #1cm width 0pt}
+\pagestyle{empty}
 
 %%%%%%%%%%%%%
 % Variables %
@@ -33,25 +33,25 @@
 
 \RequirePackage{xcolor}
 
-\definecolor{white}{RGB}{255,255,255}
+% \definecolor{white}{RGB}{255,255,255}
 
 % \definecolor{darkgray}{HTML}{333333}
 % \definecolor{gray}{HTML}{4D4D4D}
 % \definecolor{lightgray}{HTML}{999999}
 % \definecolor{verylightgray}{HTML}{F7F7F7}
 
-\ifdefined\@cv@print
-	\colorlet{fillheader}{white}
-	\colorlet{header}{gray}
-\else
-	\colorlet{fillheader}{gray}
-	\colorlet{header}{white}
-\fi
-\colorlet{textcolor}{black!75}
-\colorlet{headercolor}{black!75}
+% \ifdefined\@cv@print
+% 	\colorlet{fillheader}{white}
+% 	\colorlet{header}{gray}
+% \else
+% 	\colorlet{fillheader}{gray}
+% 	\colorlet{header}{white}
+% \fi
+% \colorlet{textcolor}{black!75}
+% \colorlet{headercolor}{black!75}
 
-\color{black!75}
-\AtBeginDocument{\color{black!75}\global\let\default@color\current@color}
+\color{black!85}
+\AtBeginDocument{\color{black!85}\global\let\default@color\current@color}
 
 %%%%%%%%%
 % Fonts %
@@ -68,12 +68,12 @@
 %%%%%%%%%%%%%
 
 \renewcommand{\section}[1]{
-	\par\vspace{\baselineskip}{\Large\bfseries\color{headercolor}#1}\vspace{-0.2cm}
+	\par\vspace{\baselineskip}{\Large\bfseries#1}\vspace{-0.2cm}
 	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}\vspace{-0.3cm}
 }
 
 \newcommand{\iconsection}[2]{
-	\par\vspace{\baselineskip}#1 {\Large\bfseries\color{headercolor}#2}\vspace{-0.2cm}
+	\par\vspace{\baselineskip}#1 {\Large\bfseries#2}\vspace{-0.2cm}
 	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}\vspace{-0.4cm}
 }
 
@@ -86,6 +86,7 @@
 \else
 	\RequirePackage[absolute,overlay]{textpos}
 \fi
+
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
 \RequirePackage{pdfpages}
@@ -96,46 +97,43 @@
 \setlength{\TPVertModule}{1cm}
 \newenvironment{header}{%
 
+	% Header background
 	\begin{tikzpicture}[remember picture,overlay]
-		\node[yshift=-6cm] at (current page.north west) {%
+		\node[yshift=-5cm] at (current page.north west) {%
 			\begin{tikzpicture}[remember picture, overlay]
-				\fill[black!0] (0,0) rectangle (21cm,6cm);
+				\fill[black!0] (0,0) rectangle (21cm,5cm);
 			\end{tikzpicture}
 		};
 	 \end{tikzpicture}
 
 	% Photo
-	\newcommand{\photo}[1]{
+	\newcommand{\photo}[2][shadow=true]{
 		\begin{textblock}{3.0}(1, 0.5)
-		\noindent
+			\noindent
 			\begin{tikzpicture}
-				\node[blur shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=3cm]{##1}};
+			\ifthenelse{\equal{shadow=true}{##1}}{
+				\node[blur shadow={shadow xshift=.8ex,shadow yshift=-.8ex}, fill=white,draw] at (0,0) {\includegraphics[width=2.5cm]{##2}};				
+			}{
+				\node[fill=white,draw] at (0,0) {\includegraphics[width=2.5cm]{##2}};
+			}
 			\end{tikzpicture}
-			% \includegraphics[width=3cm]{##1}
-			% \includegraphics{photo/photo.pdf}
-			% \includepdf[pages=-]{photo/photo.pdf}
-			% \includegraphics{photo/photo.pdf}
 		\end{textblock}
 	}
 
 	% Name
-	\begin{textblock}{7.0}(5, 1.0)
+	\begin{textblock}{7.0}(5, 1.5)	
 			\centering
-			\Huge\bfseries \firstname\\\vspace{0.2cm}
+			\Huge\bfseries \firstname\\
 			\lastname
+			
 	\end{textblock}
 
 	% Profession
-	% \newcommand{\profession}[1]{%
-	% 	\begin{textblock}{21.0}(0, 5)%
-	% 			{\hfill \Large  \bfseries ##1 \hfill}%
-	% 	\end{textblock}%
-	% }
-
 	\begin{tikzpicture}[remember picture,overlay]
-		\node[yshift=-6.5cm] at (current page.north west){
+		\node[yshift=-5.5cm] at (current page.north west){
 			\begin{tikzpicture}[remember picture, overlay]
-				\fill[black!5] (0,0) rectangle (21cm,0.7cm);
+				\fill[black!3] (0,0) rectangle (21cm,0.7cm);
+				\node[xshift=2.5cm, yshift=0.35cm](d){\scriptsize \IfLanguageName{french}{Mis à jour le}{Updated on} {\scriptsize\today}};
 				\node[xshift=10.5cm, yshift=0.35cm](p){\Large \bfseries \profession};
 				% \draw[-] (p.north west) -- (p.north east);
 				\fill[black!7] (0,0) rectangle (21cm,0.07cm);
@@ -143,21 +141,19 @@
 			\end{tikzpicture}
 		};
 	\end{tikzpicture}
+
+
 	% Contact
-	\begin{textblock}{6.0}(11, 0.5)
+	\begin{textblock}{8.0}(11, 0.5)
 }{%
 	\end{textblock}
-
-	% \begin{textblock}{3}(17.5, 0.5)
-	% 	\vcard
-	% \end{textblock}
 }
 
 \newenvironment{contact}[1][]{%
 	\newcommand{\addinfo}[2]{%\noindent
 		\noindent\par
 		\begin{tikzpicture}
-			\node[rectangle, rounded corners, fill=black!10] (a) {\parbox{1.5cm}{\raggedleft ##1 :}};
+			\node[rectangle, rounded corners, fill=black!10, minimum height=1.5em] (a) {\mbox{\raggedleft ##1 :}};
 			\node[anchor=north west, xshift=0.1cm] at (a.north east) {\parbox{6cm}{##2}};
 		\end{tikzpicture}\\\vspace{-0.2cm}%
 	}
@@ -167,15 +163,15 @@
 	\let\oldarraystretch\arraystretch
 
 	\newcommand{\dispvcard}{
-		\begin{textblock}{4}(17,0.5)
+		\begin{textblock}{3}(17,1)
 			\ifthenelse{\equal{vcard=true}{#1}}{\vcard}{}
 		\end{textblock}
 	}
 
 	\ifthenelse{\equal{vcard=true}{#1}}{
-		\begin{textblock}{4}(11,0.5)
+		\begin{textblock}{6}(11,1)
 	}{
-		\begin{textblock}{4}(13,0.5)
+		\begin{textblock}{6}(13,1)
 	}
 }{%
 	\end{textblock}
@@ -187,10 +183,9 @@
 %%%%%%%%%
 
 \newenvironment{about}{%
-	\iconsection{\faInfoSign}{About}%
+	\iconsection{\faInfoSign}{\IfLanguageName{french}{Informations}{About}}%
 	\def\arraystretch{0.5}%
 	\newcommand{\addinfo}[2]{%
-		% \pill{##1} & \shortstack{##2}\\%
 		\parbox{2cm}{\bfseries\raggedright ##1} & \parbox{3 cm}{\raggedright ##2}\\%
 	}
 
@@ -208,11 +203,9 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-	\begin{textblock}{5}(15.5, 6)
+	\begin{textblock}{5}(15.5, 5)
 	\begin{flushleft}
-	% \obeycr
 }{%
-	% \restorecr
 	\end{flushleft}
 	\end{textblock}
 }
@@ -231,29 +224,23 @@
 	\newcommand{\education}[1]{
 		\iconsection{\faBook}{##1}
 	}
-	% \newcommand{\entry}[2]{
-	% 	% \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
-	% 	\par\vspace{0.2cm}{\color{headercolor}\MakeUppercase{##1}}%\vspace{0.2cm}
-	% 	% {\large\bfseries\color{headercolor} ##1}
-	% 	\par\vspace{-0.1cm}{\color{headercolor} ##2}\\
-	% }
 
-	\begin{textblock}{14.5}(0.5, 6)
+	\begin{textblock}{14.5}(0.5, 5)
 	\begin{flushleft}
-	% \obeycr
 }{%
-	% \restorecr
 	\end{flushleft}
 	\end{textblock}
 }
 
 \newenvironment{entry}[4]{%
 	\par\vspace{0.2cm}%
-	\parbox{4cm}{\color{headercolor}#1}%
-	{\color{headercolor}\raggedright\bfseries\large#2}%
-	{\hfill\small\color{headercolor}#3}\\%
+	\parbox{4cm}{#1}%
+	{\raggedright\bfseries\large#2}%
+	{\hfill\small#3}\\%
 	{\large#4}\\%
+	\obeycr%
 }{%
+	\restorecr%
 }
 
 %%%%%%%%%
@@ -304,7 +291,7 @@ FN:\firstname \lastname
 TEL;TYPE=WORK,VOICE:\phone
 EMAIL;TYPE=PREF,INTERNET:\email
 END:VCARD
-}{width=1.181 height=1.181}{qrcode}%
+}{width=1.181 height=1.181 eclevel=M}{qrcode}%
     \end{pspicture}
 }
 
@@ -312,95 +299,6 @@ END:VCARD
 % Rating dots %
 % %%%%%%%%%%%%%%
 
-% V1
-% \RequirePackage{pgffor}
-% \RequirePackage{wasysym}
-% \newcommand{\dotrating}[1]{
-% 	\foreach \n in {1,...,4}{%
-% 		\ifnum\n>#1%
-% 			\fullmoon%
-% 		\else%
-% 			\newmoon%
-% 		\fi%
-% 		~
-% 	}
-% }
-
-% \RequirePackage{multirow}
-% \RequirePackage{rotating}
-% \RequirePackage{ifthen}
-
-% \newcounter{skillsNumber}
-
-% \newenvironment{skillgroup}[2]{%
-
-% 	\setcounter{skillsNumber}{0}
-
-% 	\newcommand{\skill}[2]{
-% 		\addtocounter{skillsNumber}{1}
-% 		\ifthenelse{\equal{1}{\value{skillsNumber}}}{
-% 			\multirow{#2}{*}{
-% 				\rotatebox{90}{\centering
-% 					\tiny\uppercase{#1}
-% 				}
-% 			}
-% 		}{}
-% 		& \parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
-% 	}
-
-% 	\renewcommand{\arraystretch}{0.5}
-
-% 	\begin{tabular}{|r|ll}
-% }{%
-% 	\end{tabular}
-% 	% \vspace{0.5cm}
-% }
-
-% \RequirePackage{pgffor}
-% \RequirePackage{wasysym}
-% \newcommand{\dotrating}[1]{
-% 	\foreach \n in {1,...,4}{%
-% 		\ifnum\n>#1%
-% 			\fullmoon%
-% 		\else%
-% 			\newmoon%
-% 		\fi%
-% 		~
-% 	}
-% }
-
-% \RequirePackage{multirow}
-% \RequirePackage{rotating}
-% \RequirePackage{ifthen}
-
-% \newcounter{skillsNumber}
-
-% \newenvironment{skillgroup}[2]{%
-
-% 	\setcounter{skillsNumber}{0}
-
-% 	\newcommand{\skill}[2]{
-% 		% \addtocounter{skillsNumber}{1}
-% 		% \ifthenelse{\equal{1}{\value{skillsNumber}}}{
-% 		% 	\multirow{#2}{*}{
-% 		% 		% \rotatebox{90}{\centering
-% 		% 		% 	\tiny\uppercase{#1}
-% 		% 		% }
-% 		% 	}
-% 		% }{}
-% 		\parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
-% 	}
-
-% 	\renewcommand{\arraystretch}{0.5}
-
-% 	\rotatebox{90}{\llap{\tiny\uppercase{#1}}}%s
-% 	\begin{tabular}{@{}|ll}
-% }{%
-% 	\end{tabular}
-% 	\vspace{0.5cm}
-% }
-
-\RequirePackage{graphicx}
 \RequirePackage{wasysym}
 
 \newcommand{\dotrating}{%
@@ -417,6 +315,10 @@ END:VCARD
 }
 
 \newcounter{skillsNumber}
+
+\newcommand{\skills}{
+	\iconsection{\faCode}{\IfLanguageName{french}{Compétences}{Skills}}
+}
 
 \newenvironment{skillgroup}[1]{%
     \setcounter{skillsNumber}{0}%
@@ -437,11 +339,12 @@ END:VCARD
 \RequirePackage{colortbl}
 
 \newcommand{\skillscaption}{
+	% \noindent\makebox[\linewidth]{\rule{0.25\textwidth}{0pt}\rule{0.5\textwidth}{0.4pt}\rule{0.25\textwidth}{0pt}}
 	\begin{tabular}{rl}
-		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Beginner} & \count0=0\count2=1\relax\dotrating\\
-		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Intermediate} & \count0=0\count2=2\relax\dotrating\\
-		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Advanced} & \count0=0\count2=3\relax\dotrating\\
-		\rowcolor{black!0} \parbox{2.5cm}{\raggedleft Expert} & \count0=0\count2=4\relax\dotrating\\
+		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Débutant}{Beginner}} & \count0=0\count2=1\relax\dotrating\\
+		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Intermédiaire}{Intermediate}} & \count0=0\count2=2\relax\dotrating\\
+		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Avancé}{Advanced}} & \count0=0\count2=3\relax\dotrating\\
+		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Expert}{Expert}} & \count0=0\count2=4\relax\dotrating\\
 	\end{tabular}	
 }
 

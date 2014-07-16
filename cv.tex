@@ -1,106 +1,8 @@
-<<<<<<< HEAD
-    %!TEX program = xelatex
-
-    % Pass 'debug' option to show boxes
-    \documentclass[a4paper]{article}
-
-    % \RequirePackage{pgffor}
-    % \RequirePackage{wasysym}
-    % \newcommand{\dotrating}[1]{
-    %     \foreach \n in {1,...,4}{%
-    %         \ifnum\n>#1%
-    %             \fullmoon%
-    %         \else%
-    %             \newmoon%
-    %         \fi%
-    %         ~
-    %     }
-    % }
-
-    % \RequirePackage{multirow}
-    % \RequirePackage{rotating}
-    % \RequirePackage{ifthen}
-
-    % \newcounter{skillsNumber}
-
-    % \newenvironment{skillgroup}[2]{%
-
-    %     \setcounter{skillsNumber}{0}
-
-    %     \newcommand{\skill}[2]{
-    %         \addtocounter{skillsNumber}{1}
-    %         \ifthenelse{\equal{1}{\value{skillsNumber}}}{
-    %             \multirow{#2}{*}{
-    %                 \rotatebox{90}{\centering
-    %                     \tiny\uppercase{#1}
-    %                 }
-    %             }
-    %         }{}
-    %         & \parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
-    %     }
-
-    %     \renewcommand{\arraystretch}{0.5}
-
-    %     \begin{tabular}{r|ll}
-    % }{%
-    %     \end{tabular}
-    % }
-
-\RequirePackage{wasysym}
-\RequirePackage{graphicx}
-
-
-\newcommand{\dotrating}{%
-        \ifnum\count0<\count2 %
-            \newmoon
-        \else
-            \fullmoon
-        \fi
-            \hspace{.5em}%
-         \ifnum\count0<3
-            \advance\count0 1 %
-            \expandafter\dotrating
-         \fi
-}
-
-
-
-\newcounter{skillsNumber}
-
-\newenvironment{skillgroup}[2]{%
-    \setcounter{skillsNumber}{0}%
-    \newcommand{\skill}[2]{%
-       ##1&\count0=0\count2=##2\relax
-           \dotrating\\%
-    }
-%
-    \renewcommand{\arraystretch}{1.1}%
-
-   \rotatebox{90}{\llap{\tiny\uppercase{#1}}}%
-    \begin{tabular}[t]{@{}|ll}%
-}{%
-    \end{tabular}%
-}
-
-    \begin{document}
-
-
-        \begin{skillgroup}{PROGRAMMATION}{6}
-            \skill{C}{3}
-            \skill{C++}{3}
-            \skill{JAVA}{2}
-            \skill{MATLAB}{4}
-            \skill{VBA/6/.NET}{4}
-            \skill{Shell}{4}
-        \end{skillgroup}
-
-
-    \end{document}
-=======
 %!TEX program = xelatex
 
 % Pass 'debug' option to show boxes
 \documentclass[a4paper]{genard-cv}
+\usepackage[french]{babel}
 
 % Information
 \renewcommand{\firstname}{Elie}
@@ -109,18 +11,20 @@
 \renewcommand{\email}{elaye@github.com}
 \renewcommand{\adress}{33 rue des Augustins}
 \renewcommand{\city}{33000 Bordeaux}
-\renewcommand{\profession}{Engineer}
+\renewcommand{\profession}{Ingénieur}
+
+\linespread{1.2}
 
 \begin{document}
 
 \begin{header}
 
-\photo{photo/photo.png}
+	\photo[shadow=true]{photo/photo.png}
 
-	\begin{contact}[vcard=false]
+	\begin{contact}[vcard=true]
 		\addinfo{Email}{\href{mailto:\email}{\email}}
-		\addinfo{Phone}{\phone}
-		\addinfo{Adress}{\adress \\ \city}
+		\addinfo{Téléphone}{\phone}
+		\addinfo{Adresse}{\adress \\ \city}
 		% \addinfo{}{\city}
 	\end{contact}
 
@@ -137,6 +41,7 @@
 			{Juin-Septembre 2013}{Stagiaire ingénieur}{Grenoble}
 			{MOVEA}
 			Détection de pas pour la navigation piétonne
+			Simulink
 		\end{entry}
 
 	\education{Formation}
@@ -156,35 +61,42 @@
 \end{body}
 
 \begin{aside}
+
 	\begin{about}
 		\addinfo{Né le}{28/03/1990}
 		\addinfo{Age}{24 ans}
 		\addinfo{Disponibilité}{temps plein}
 	\end{about}\noindent
+
+	\skills
+	
 	\begin{skillgroup}{Languages}
 		\skill{C++}{3}
 		\skill{Ruby}{3}
 		\skill{Java}{1}
 	\end{skillgroup}
+
 	\begin{skillgroup}{Web}
-		\skill{HTML5}{3}
-		\skill{CSS3}{3}
+		\skill{HTML5/CSS3}{3}
+		% \skill{CSS3}{3}
 		\skill{Javascript}{2}
 		\skill{Ruby on Rails}{2}
 		\skill{Node.js}{2}
 	\end{skillgroup}
+
 	\begin{skillgroup}{OS}
 		\skill{GNU/Linux}{3}
 		\skill{OS X}{2}
 		\skill{Windows}{2}
 	\end{skillgroup}
+
 	\begin{skillgroup}{Misc}
-		\skill{OpenFrameworks}{3}
-		\skill{\LaTeX}{3}
+		\skill{OpenFrameworks}{4}
+		\skill{\LaTeX}{4}
 		\skill{Photoshop}{3}
 	\end{skillgroup}
+
 	\skillscaption
 \end{aside}
 
 \end{document}
->>>>>>> 7fa5ca5b23d38f42d3c7abf736ba1d60544e8c64
