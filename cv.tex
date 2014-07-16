@@ -1,3 +1,102 @@
+<<<<<<< HEAD
+    %!TEX program = xelatex
+
+    % Pass 'debug' option to show boxes
+    \documentclass[a4paper]{article}
+
+    % \RequirePackage{pgffor}
+    % \RequirePackage{wasysym}
+    % \newcommand{\dotrating}[1]{
+    %     \foreach \n in {1,...,4}{%
+    %         \ifnum\n>#1%
+    %             \fullmoon%
+    %         \else%
+    %             \newmoon%
+    %         \fi%
+    %         ~
+    %     }
+    % }
+
+    % \RequirePackage{multirow}
+    % \RequirePackage{rotating}
+    % \RequirePackage{ifthen}
+
+    % \newcounter{skillsNumber}
+
+    % \newenvironment{skillgroup}[2]{%
+
+    %     \setcounter{skillsNumber}{0}
+
+    %     \newcommand{\skill}[2]{
+    %         \addtocounter{skillsNumber}{1}
+    %         \ifthenelse{\equal{1}{\value{skillsNumber}}}{
+    %             \multirow{#2}{*}{
+    %                 \rotatebox{90}{\centering
+    %                     \tiny\uppercase{#1}
+    %                 }
+    %             }
+    %         }{}
+    %         & \parbox{2.5cm}{\raggedright##1} & \dotrating{##2} \\
+    %     }
+
+    %     \renewcommand{\arraystretch}{0.5}
+
+    %     \begin{tabular}{r|ll}
+    % }{%
+    %     \end{tabular}
+    % }
+
+\RequirePackage{wasysym}
+\RequirePackage{graphicx}
+
+
+\newcommand{\dotrating}{%
+        \ifnum\count0<\count2 %
+            \newmoon
+        \else
+            \fullmoon
+        \fi
+            \hspace{.5em}%
+         \ifnum\count0<3
+            \advance\count0 1 %
+            \expandafter\dotrating
+         \fi
+}
+
+
+
+\newcounter{skillsNumber}
+
+\newenvironment{skillgroup}[2]{%
+    \setcounter{skillsNumber}{0}%
+    \newcommand{\skill}[2]{%
+       ##1&\count0=0\count2=##2\relax
+           \dotrating\\%
+    }
+%
+    \renewcommand{\arraystretch}{1.1}%
+
+   \rotatebox{90}{\llap{\tiny\uppercase{#1}}}%
+    \begin{tabular}[t]{@{}|ll}%
+}{%
+    \end{tabular}%
+}
+
+    \begin{document}
+
+
+        \begin{skillgroup}{PROGRAMMATION}{6}
+            \skill{C}{3}
+            \skill{C++}{3}
+            \skill{JAVA}{2}
+            \skill{MATLAB}{4}
+            \skill{VBA/6/.NET}{4}
+            \skill{Shell}{4}
+        \end{skillgroup}
+
+
+    \end{document}
+=======
 %!TEX program = xelatex
 
 % Pass 'debug' option to show boxes
@@ -88,3 +187,4 @@
 \end{aside}
 
 \end{document}
+>>>>>>> 7fa5ca5b23d38f42d3c7abf736ba1d60544e8c64
