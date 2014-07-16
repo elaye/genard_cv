@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     %!TEX program = xelatex
 
     % Pass 'debug' option to show boxes
@@ -95,3 +96,104 @@
 
 
     \end{document}
+=======
+%!TEX program = xelatex
+
+% Pass 'debug' option to show boxes
+\documentclass[a4paper, debug]{genard-cv}
+
+% Information
+\renewcommand{\firstname}{Elie}
+\renewcommand{\lastname}{Génard}
+\renewcommand{\phone}{+33680514419}
+\renewcommand{\email}{elaye@github.com}
+\renewcommand{\adress}{33 rue des Augustins}
+\renewcommand{\city}{33000 Bordeaux}
+\renewcommand{\profession}{Engineer}
+
+\begin{document}
+
+\begin{header}
+
+\photo{photo/photo.png}
+
+	\begin{contact}[vcard=false]
+		\addinfo{Email}{\href{mailto:\email}{\email}}
+		\addinfo{Phone}{\phone}
+		\addinfo{Adress}{\adress}
+		\addinfo{}{\city}
+	\end{contact}
+
+\end{header}
+
+\begin{body}
+	\experience{Expérience professionnelle}
+		\begin{entry}
+			{Mars-Juillet 2014}{Stagiaire ingénieur}{Bordeaux}
+			{LaBRI - LABORATOIRE BORDELAIS DE RECHERCHE EN INFORMATIQUE}
+			Résumé vidéo scalable
+		\end{entry}
+		\begin{entry}
+			{Juin-Septembre 2013}{Stagiaire ingénieur}{Grenoble}
+			{MOVEA}
+			Détection de pas pour la navigation piétonne
+		\end{entry}
+
+	\education{Formation}
+		\begin{entry}
+			{2011 - 2014}{Grenoble INP - Phelma}{Grenoble, France}
+			{Ecole d'ingénieur en Physique, Electronique et Matériaux}
+		\end{entry}
+		\begin{entry}
+			{2008 - 2011}{Classe Préparatoire aux Grandes Ecoles}{Poitiers, France}
+			{MPSI - MP - MP* Lycée Camille Guérin}		
+		\end{entry}
+		\begin{entry}
+			{2008}{Baccalauréat Scientifique}{Barbezieux, France}
+			{Mention Bien}
+		\end{entry}
+
+% \begin{tabular}{|c|c|}
+% 	\hline
+% 	\multirow{4}{1in}{Common g text} & Column g2a\\
+% 	& Column g2b \\
+% 	& Column g2c \\
+% 	& Column g2d \\
+% 	\hline
+% \end{tabular}
+
+\end{body}
+
+\begin{aside}
+	\begin{about}
+		\addinfo{Né le}{28/03/1990}
+		\addinfo{Age}{24 ans}
+		\addinfo{Disponibilité}{temps plein}
+	\end{about}\noindent
+	\begin{skillgroup}{Languages}{4}
+		\skill{C++}{3}
+		\skill{Ruby}{3}
+		\skill{Java}{1}
+	\end{skillgroup}
+	\begin{skillgroup}{Web}{5}
+		\skill{HTML5}{3}
+		\skill{CSS3}{3}
+		\skill{Javascript}{2}
+		\skill{Ruby on Rails}{2}
+		\skill{Node.js}{2}
+	\end{skillgroup}
+	\begin{skillgroup}{OS}{3}
+		\skill{GNU/Linux}{3}
+		\skill{OS X}{2}
+		\skill{Windows}{2}
+	\end{skillgroup}
+	\begin{skillgroup}{Misc}{3}
+		\skill{OpenFrameworks}{3}
+		\skill{\LaTeX}{3}
+		\skill{Photoshop}{3}
+	\end{skillgroup}
+	\skillscaption
+\end{aside}
+
+\end{document}
+>>>>>>> 7fa5ca5b23d38f42d3c7abf736ba1d60544e8c64

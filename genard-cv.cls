@@ -348,6 +348,20 @@ END:VCARD
 }{%
 	\end{tabular}
 	% \vspace{0.5cm}
+<<<<<<< HEAD
+=======
+}
+
+\RequirePackage{colortbl}
+
+\newcommand{\skillscaption}{
+	\begin{tabular}{rl}
+		\rowcolor{black!0} Beginner & \dotrating{1}\\
+		\rowcolor{black!0} Intermediate & \dotrating{2}\\
+		\rowcolor{black!0} Advanced & \dotrating{3}\\
+		\rowcolor{black!0} Expert & \dotrating{4}\\
+	\end{tabular}	
+>>>>>>> 7fa5ca5b23d38f42d3c7abf736ba1d60544e8c64
 }
 
 % %%%%%%%%%%%%%%%%
