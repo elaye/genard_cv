@@ -184,7 +184,7 @@
 
 \newenvironment{about}{%
 	\iconsection{\faInfoSign}{\IfLanguageName{french}{Informations}{About}}%
-	\def\arraystretch{0.5}%
+	% \def\arraystretch{0.8}%
 	\newcommand{\addinfo}[2]{%
 		\parbox{2cm}{\bfseries\raggedright ##1} & \parbox{3 cm}{\raggedright ##2}\\%
 	}
@@ -218,11 +218,11 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{body}{%
-	\newcommand{\experience}[1]{
-		\iconsection{\faCogs}{##1}
+	\newcommand{\experience}{
+		\iconsection{\faCogs}{\IfLanguageName{french}{Expériences professionnelles}{Professionnal experiences}}
 	}
-	\newcommand{\education}[1]{
-		\iconsection{\faBook}{##1}
+	\newcommand{\education}{
+		\iconsection{\faBook}{\IfLanguageName{french}{Formation}{Education}}
 	}
 
 	\begin{textblock}{14.5}(0.5, 5)
@@ -233,14 +233,17 @@
 }
 
 \newenvironment{entry}[4]{%
-	\par\vspace{0.2cm}%
+	\par\vspace{2mm}%
 	\parbox{4cm}{#1}%
 	{\raggedright\bfseries\large#2}%
 	{\hfill\small#3}\\%
-	{\large#4}\\%
-	\obeycr%
+	{\large#4}\\\vspace{1mm}%
+
+	\hfill\begin{minipage}{\dimexpr\textwidth-5mm}
+	\begin{tabular}{|l}
 }{%
-	\restorecr%
+	\end{tabular}%
+	\end{minipage}
 }
 
 %%%%%%%%%
@@ -353,7 +356,13 @@ END:VCARD
 %%%%%%%%%%%%%%%%
 
 \RequirePackage[left=0cm,top=0cm,right=0cm,bottom=0cm,nohead,nofoot]{geometry}
-\RequirePackage[colorlinks=false, pdfborder={0 0 0}, hidelinks]{hyperref}
+
+\ifdefined\@cv@print
+	\RequirePackage[pdfborder={0 0 0}, hidelinks]{hyperref}
+\else
+	\RequirePackage[pdfborder={0 0 0}, colorlinks=true, urlcolor=red!15!blue!90]{hyperref}
+\fi
+
 
 \hypersetup{
   pdfinfo={
