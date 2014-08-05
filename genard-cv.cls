@@ -26,6 +26,7 @@
 \newcommand{\adress}{}
 \newcommand{\city}{}
 \newcommand{\profession}{}
+\newcommand{\subtitle}{}
 
 %%%%%%%%%%
 % Colors %
@@ -60,7 +61,7 @@
 \RequirePackage{microtype}
 
 \renewcommand{\familydefault}{\sfdefault}
-
+\RequirePackage{fontspec}
 \RequirePackage{fontawesome}
 
 %%%%%%%%%%%%%
@@ -121,11 +122,12 @@
 	}
 
 	% Name
-	\begin{textblock}{7.0}(5, 1.5)	
+	\begin{textblock}{8}(2.5, 1)	
 			\centering
-			\Huge\bfseries \firstname\\
-			\lastname
-			
+			{\Huge\bfseries \firstname\\
+			\lastname\\}
+			\bigskip
+			{\Large \subtitle}
 	\end{textblock}
 
 	% Profession
@@ -184,6 +186,7 @@
 
 \newenvironment{about}{%
 	\iconsection{\faInfoSign}{\IfLanguageName{french}{Informations}{About}}%
+	\vspace{2mm}
 	% \def\arraystretch{0.8}%
 	\newcommand{\addinfo}[2]{%
 		\parbox{2cm}{\bfseries\raggedright ##1} & \parbox{3 cm}{\raggedright ##2}\\%
@@ -203,7 +206,7 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-	\begin{textblock}{5}(15.5, 5)
+	\begin{textblock}{5}(15.5, 5.5)
 	\begin{flushleft}
 }{%
 	\end{flushleft}
@@ -225,7 +228,7 @@
 		\iconsection{\faBook}{\IfLanguageName{french}{Formation}{Education}}
 	}
 
-	\begin{textblock}{14.5}(0.5, 5)
+	\begin{textblock}{14.5}(0.5, 5.5)
 	\begin{flushleft}
 }{%
 	\end{flushleft}
@@ -234,8 +237,10 @@
 
 \newenvironment{entry}[4]{%
 	\par\vspace{2mm}%
-	\parbox{4cm}{#1}%
-	{\raggedright\bfseries\large#2}%
+	\parbox{3.7cm}{#1}%
+	\begin{minipage}{8.5cm}
+		{\raggedright\bfseries\large#2}%
+	\end{minipage}
 	{\hfill\small#3}\\%
 	{\large#4}\\\vspace{1mm}%
 
@@ -244,6 +249,7 @@
 }{%
 	\end{tabular}%
 	\end{minipage}
+	\vspace{0.2cm}
 }
 
 %%%%%%%%%
@@ -321,6 +327,7 @@ END:VCARD
 
 \newcommand{\skills}{
 	\iconsection{\faCode}{\IfLanguageName{french}{Compétences}{Skills}}
+	\vspace{0.5cm}
 }
 
 \newenvironment{skillgroup}[1]{%
@@ -343,7 +350,8 @@ END:VCARD
 
 \newcommand{\skillscaption}{
 	% \noindent\makebox[\linewidth]{\rule{0.25\textwidth}{0pt}\rule{0.5\textwidth}{0.4pt}\rule{0.25\textwidth}{0pt}}
-	\begin{tabular}{rl}
+	\rotatebox{90}{\llap{\tiny\uppercase{caption}}}%
+	\begin{tabular}[t]{@{}|rl}
 		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Débutant}{Beginner}} & \count0=0\count2=1\relax\dotrating\\
 		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Intermédiaire}{Intermediate}} & \count0=0\count2=2\relax\dotrating\\
 		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Avancé}{Advanced}} & \count0=0\count2=3\relax\dotrating\\

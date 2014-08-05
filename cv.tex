@@ -2,16 +2,17 @@
 
 % Pass 'debug' option to show boxes
 \documentclass[a4paper]{genard-cv}
-\usepackage[]{babel}
+\usepackage[english]{babel}
 
 % Information
 \renewcommand{\firstname}{Elie}
 \renewcommand{\lastname}{Génard}
-\renewcommand{\phone}{+33680514419}
-\renewcommand{\email}{elaye@github.com}
-\renewcommand{\adress}{33 rue des Augustins}
-\renewcommand{\city}{33000 Bordeaux}
-\renewcommand{\profession}{Ingénieur}
+\renewcommand{\subtitle}{Resume for a PhD application}
+\renewcommand{\phone}{***REMOVED***}
+\renewcommand{\email}{elie.genard@phelma.grenoble-inp.fr}
+\renewcommand{\adress}{***REMOVED***}
+\renewcommand{\city}{***REMOVED***}
+\renewcommand{\profession}{Engineer in Physics}
 
 \linespread{1.2}
 
@@ -19,12 +20,12 @@
 
 \begin{header}
 
-	\photo[shadow=true]{photo/photo.png}
+	% \photo[shadow=true]{photo/photo.png}
 
-	\begin{contact}[vcard=true]
+	\begin{contact}[vcard=false]
 		\addinfo{Email}{\href{mailto:\email}{\email}}
-		\addinfo{Téléphone}{\phone}
-		\addinfo{Adresse}{\adress \\ \city}
+		\addinfo{Phone}{\phone}
+		\addinfo{Address}{\adress \\ \city}
 		% \addinfo{}{\city}
 	\end{contact}
 
@@ -33,39 +34,55 @@
 \begin{body}
 	\experience
 		\begin{entry}
-			{Mars-Juillet 2014}{Stagiaire ingénieur}{Bordeaux}
-			{LaBRI - LABORATOIRE BORDELAIS DE RECHERCHE EN INFORMATIQUE}
-			Constitution de résumés vidéo scalables de vidéos documentaires dans un espace cross-media\\
-			Projet international France-Mexique
+			{Mars-July 2014}{Internship in a computer science laboratory}{Bordeaux}
+			{LaBRI - Laboratoire Bordelais de Recherche en Informatique}
+			\textbf{Project:} Scalable video summarization of cultural video documents in cross-media space based\\
+			 on data cube approach (international French-Mexican project)\\
+			~~~~Extraction and clustering of low-level audiovisual feature descriptors\\
+			~~~~Software development in C++
 		\end{entry}
 		\begin{entry}
-			{Juin-Septembre 2013}{Stagiaire ingénieur}{Grenoble}
-			{MOVEA}
-			Détection de pas pour la navigation piétonne\\
-			Simulink
+			{June-September 2013}{Internship as an engineer assistant}{Grenoble}
+			{Movea}
+			\textbf{Project:} Step detection for pedestrian navigation\\
+			~~~~Data analysis of embedded inertial measurement unit recordings\\
+			~~~~Step detection model made with Simulink
 		\end{entry}
 
 	\education
 		\begin{entry}
-			{2011 - 2014}{Grenoble INP - Phelma}{Grenoble, France}
-			{Ecole d'ingénieur en Physique, Electronique et Matériaux}
-			Semestre à choix Art, Science et Techonologie\\
-			Projet de diabolo interactif\\
-			{\itshape code disponible sur \href{https://github.com/elaye}{https://github.com/elaye}}\\
-			Physique et Nanosciences en deuxième année\\
-			Projet sur les mémoires MRAM ultrarapides à couche synthétique antiferromagnétique\\
-			Physique Electronique et Télécom en première année\\
-			Projet CANSAT
+			{2011 - 2014}{Master's degree at Grenoble INP Phelma}{Grenoble}
+			{PHELMA - School of Engineering in Physics, Electronics and Materials Science}
+			\textit{2013-2014} Art, Science and Techonology semester\\
+			\textit{HMI - Haptic interfaces - Programming for interactive creation}\\
+			\textbf{Project:} Interactive juggling with a diabolo\\
+			~~~~Tracking of the juggler arms and diabolo with a Kinect\\
+			~~~~Visual feedback with a particle engine that reacts to juggler movements\\
+			~~~~Audio feedback made with SuperCollider\\
+			~~~~{\itshape [~code available at \href{https://github.com/elaye/AST\_diabolo\_particles}{https://github.com/elaye/AST\_diabolo\_particles}~]}
+			\medskip\\
+
+			\textit{2012-2013} Physics and nanosciences\\
+			\textit{Quantum physics - Solid-state physics - Laser physics}\\
+			\textbf{Project:} Ultrafast MRAM memories\\
+			~~~~Simulation of the behaviour of magnetic nanopillars
+			\medskip\\
+
+			\textit{2011-2012} Physics, Electronics and Telecom\\
+			\textit{Physics - Electronics - Signal processing}\\
+			\textbf{Project:} CanSat competition\\
+			~~~~Embedded electronics and Arduino programming
 		\end{entry}
 		\begin{entry}
-			{2008 - 2011}{Classe Préparatoire aux Grandes Ecoles}{Poitiers, France}
-			{MPSI - MP - MP* Lycée Camille Guérin}
-			Section Mathématiques et Physique\\
-			Option Sciences de l'Ingénieur
+			{2008 - 2011}{Preparatory Class to Grandes Ecoles}{Poitiers}
+			{Intensive three-year course to prepare for the competitive entrance
+			into France’s leading colleges - MPSI - MP - MP* at Lycée Camille Guérin}
+			Physics and mathematics studies\\
+			Engineering science option
 		\end{entry}
 		\begin{entry}
-			{2008}{Baccalauréat Scientifique}{Barbezieux, France}
-			{Mention Bien}
+			{2008}{High school diploma - Scientific option}{Barbezieux}
+			{With honors}
 		\end{entry}
 
 \end{body}
@@ -73,9 +90,9 @@
 \begin{aside}
 
 	\begin{about}
-		\addinfo{Né le}{28/03/1990}
-		\addinfo{Age}{24 ans}
-		\addinfo{Disponibilité}{temps plein}
+		\addinfo{Age:}{24}
+		\addinfo{French:}{mother tongue}
+		\addinfo{English:}{fluent}
 	\end{about}\noindent
 
 	\skills
