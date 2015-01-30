@@ -61,7 +61,7 @@
 \RequirePackage{microtype}
 
 \renewcommand{\familydefault}{\sfdefault}
-\RequirePackage{fontspec}
+% \RequirePackage{fontspec}
 \RequirePackage{fontawesome}
 
 %%%%%%%%%%%%%
@@ -189,7 +189,7 @@
 	\vspace{2mm}
 	% \def\arraystretch{0.8}%
 	\newcommand{\addinfo}[2]{%
-		\parbox{2cm}{\bfseries\raggedright ##1} & \parbox{3 cm}{\raggedright ##2}\\%
+		\parbox{2cm}{\bfseries\raggedleft ##1} & \parbox{3 cm}{\raggedright ##2}\\%
 	}
 
 	\begin{tabular}{cc}%
@@ -222,7 +222,7 @@
 \setlength{\TPVertModule}{1cm}
 \newenvironment{body}{%
 	\newcommand{\experience}{
-		\iconsection{\faCogs}{\IfLanguageName{french}{Expériences professionnelles}{Professionnal experiences}}
+		\iconsection{\faCogs}{\IfLanguageName{french}{Expériences professionnelles}{Professional experience}}
 	}
 	\newcommand{\education}{
 		\iconsection{\faBook}{\IfLanguageName{french}{Formation}{Education}}
