@@ -1,0 +1,128 @@
+%!TEX program = xelatex
+
+% Pass 'debug' option to show boxes
+\documentclass[a4paper]{genard-cv}
+\usepackage[french]{babel}
+
+% Information
+\renewcommand{\firstname}{Elie}
+\renewcommand{\lastname}{Génard}
+\renewcommand{\subtitle}{CV pour un poste d'ingénieur créatif}
+\renewcommand{\phone}{***REMOVED***}
+\renewcommand{\email}{***REMOVED***}
+\renewcommand{\adress}{***REMOVED***}
+\renewcommand{\city}{***REMOVED***}
+\renewcommand{\profession}{Ingénieur en physique et électronique}
+
+\linespread{1.2}
+
+\begin{document}
+
+\begin{header}
+
+	% \photo[shadow=true]{photo/photo.png}
+
+	\begin{contact}[vcard=false]
+		\addinfo{Email}{\href{mailto:\email}{\email}}
+		\addinfo{Téléphone}{\phone}
+		\addinfo{Adresse}{\adress \\ \city}
+		% \addinfo{}{\city}
+	\end{contact}
+
+\end{header}
+
+\begin{body}
+	\experience
+		\begin{entry}
+			{Mars-Juillet 2014}{Stage dans un laboratoire d'informatique}{Bordeaux}
+			{LaBRI - Laboratoire Bordelais de Recherche en Informatique}
+			\textbf{Projet :} Création de résumés vidéo scalables de documents culturels en utilisant\\
+			un cube de données (projet international franco-mexicain)\\
+			~~~~Extraction et clustering de descripteurs de caractéristiques audiovisuels bas niveau\\
+			~~~~Programmation en C++
+		\end{entry}
+		\begin{entry}
+			{Juin-Septembre 2013}{Stage en tant qu'assistant ingénieur en \\traitement du signal}{Grenoble}
+			{Movea}
+			\textbf{Projet :} Détection de pas pour la navigation piétonne\\
+			~~~~Analyse de données enregistrées par une centrale inertielle embarquée\\
+			~~~~Modèle de détection de pas réalisé avec Simulink
+		\end{entry}
+
+	\education
+		\begin{entry}
+			{2011 - 2014}{Ecole d'ingénieur à Grenoble INP Phelma}{Grenoble}
+			{PHELMA - Ecolde d'ingénieur en Physique, Electronique et Matériaux}
+			\textit{2013-2014} Semestre Art, Science et Techonologie\\
+			\textit{HMI - Interfaces haptiques - Programmation pour la création interactivve}\\
+			\textbf{Projet :} Jonglage interactif avec un diabolo\\
+			~~~~Tracking des bras du jongleur et du diabolo avec une Kinect\\
+			~~~~Visualisation utilisant un système de particules qui réagit aux mouvements du jongleur\\
+			~~~~Génération sonore réalisée avec SuperCollider\\
+			~~~~{\itshape [~code disponible sur \href{https://github.com/elaye/AST\_diabolo\_particles}{https://github.com/elaye/AST\_diabolo\_particles}~]}
+			\medskip\\
+
+			\textit{2012-2013} Physique et nanosciences\\
+			\textit{Physique quantique - Physique du solide - Physique des lasers}\\
+			\textbf{Projet :} Mémoires MRAM ultrarapides\\
+			~~~~Simulation du comportement de nanopilliers magnétiques
+			\medskip\\
+
+			\textit{2011-2012} Physique, Electronique et Télécoms\\
+			\textit{Physique - Electronique - Traitement du signal}\\
+			\textbf{Projet :} Compétition CanSat\\
+			~~~~Electronique embarquée et programmation Arduino
+		\end{entry}
+		\begin{entry}
+			{2008 - 2011}{Classe Préparatoire aux Grandes Ecoles}{Poitiers}
+			{MPSI - MP - MP*}
+			Physique et Mathématiques\\
+			Option Sciences de l'Ingénieur
+		\end{entry}
+		\begin{entry}
+			{2008}{Baccalauréat - Section S}{Barbezieux}
+			{Mention Bien}
+		\end{entry}
+
+\end{body}
+
+\begin{aside}
+
+	\begin{about}
+		\addinfo{Age:}{24}
+		\addinfo{Français:}{langue maternelle}
+		\addinfo{Anglais:}{courant}
+	\end{about}\noindent
+
+	\skills
+	
+	\begin{skillgroup}{Langages}
+		\skill{C++}{3}
+		\skill{Ruby}{3}
+		\skill{Java}{1}
+	\end{skillgroup}
+
+	\begin{skillgroup}{Web}
+		\skill{HTML5/CSS3}{3}
+		% \skill{CSS3}{3}
+		\skill{Javascript}{2}
+		\skill{Ruby on Rails}{2}
+		\skill{Node.js}{2}
+	\end{skillgroup}
+
+	\begin{skillgroup}{OS}
+		\skill{GNU/Linux}{3}
+		\skill{OS X}{2}
+		\skill{Windows}{2}
+	\end{skillgroup}
+
+	\begin{skillgroup}{Misc}
+		\skill{openFrameworks}{4}
+		\skill{\LaTeX}{4}
+		\skill{Photoshop}{3}
+	\end{skillgroup}
+
+	\skillscaption
+\end{aside}
+
+\end{document}
