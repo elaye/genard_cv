@@ -124,9 +124,9 @@
 	% Name
 	\begin{textblock}{8}(2.5, 1)	
 			\centering
-			{\Huge\bfseries \firstname\\
-			\lastname\\}
-			\bigskip
+			\medskip
+			{\Huge\bfseries \firstname~\lastname\\}
+			\bigskip\bigskip
 			{\Large \subtitle}
 	\end{textblock}
 
@@ -146,7 +146,7 @@
 
 
 	% Contact
-	\begin{textblock}{8.0}(11, 0.5)
+	\begin{textblock}{8.0}(11, 5)
 }{%
 	\end{textblock}
 }
@@ -171,9 +171,9 @@
 	}
 
 	\ifthenelse{\equal{vcard=true}{#1}}{
-		\begin{textblock}{6}(11,1)
+		\begin{textblock}{6}(11,0.5)
 	}{
-		\begin{textblock}{6}(13,1)
+		\begin{textblock}{6}(13,0.5)
 	}
 }{%
 	\end{textblock}
@@ -352,10 +352,10 @@ END:VCARD
 	% \noindent\makebox[\linewidth]{\rule{0.25\textwidth}{0pt}\rule{0.5\textwidth}{0.4pt}\rule{0.25\textwidth}{0pt}}
 	\rotatebox{90}{\llap{\tiny\uppercase{caption}}}%
 	\begin{tabular}[t]{@{}|rl}
-		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Débutant}{Beginner}} & \count0=0\count2=1\relax\dotrating\\
-		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Intermédiaire}{Intermediate}} & \count0=0\count2=2\relax\dotrating\\
-		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Avancé}{Advanced}} & \count0=0\count2=3\relax\dotrating\\
-		\rowcolor{black!3} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Expert}{Expert}} & \count0=0\count2=4\relax\dotrating\\
+		\rowcolor{black!4} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Débutant}{Beginner}} & \count0=0\count2=1\relax\dotrating\\
+		\rowcolor{black!4} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Intermédiaire}{Intermediate}} & \count0=0\count2=2\relax\dotrating\\
+		\rowcolor{black!4} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Avancé}{Advanced}} & \count0=0\count2=3\relax\dotrating\\
+		\rowcolor{black!4} \parbox{2.5cm}{\raggedleft \IfLanguageName{french}{Expert}{Expert}} & \count0=0\count2=4\relax\dotrating\\
 	\end{tabular}	
 }
 
