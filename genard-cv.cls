@@ -206,7 +206,7 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-	\begin{textblock}{5}(15.5, 5.5)
+	\begin{textblock}{5}(15.5, 5.2)
 	\begin{flushleft}
 }{%
 	\end{flushleft}
@@ -228,7 +228,7 @@
 		\iconsection{\faBook}{\IfLanguageName{french}{Formation}{Education}}
 	}
 
-	\begin{textblock}{14.5}(0.5, 5.5)
+	\begin{textblock}{14.5}(0.5, 5.2)
 	\begin{flushleft}
 }{%
 	\end{flushleft}
