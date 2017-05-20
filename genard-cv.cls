@@ -123,7 +123,7 @@
 	}
 
 	% Name
-	\begin{textblock}{8}(2.5, 1)	
+	\begin{textblock}{8}(4, 1)	
 			\centering
 			\medskip
 			{\Huge\bfseries \firstname~\lastname\\}
@@ -174,7 +174,7 @@
 	\ifthenelse{\equal{vcard=true}{#1}}{
 		\begin{textblock}{6}(11,0.5)
 	}{
-		\begin{textblock}{6}(13,0.5)
+		\begin{textblock}{6}(15,1)
 	}
 }{%
 	\end{textblock}
@@ -344,7 +344,7 @@ END:VCARD
 	\begin{tabular}[t]{@{}|ll}%
 }{%
     \end{tabular}%
-    \vspace{0.3cm}%
+    \vspace{1cm}%
 }
 
 \RequirePackage{colortbl}

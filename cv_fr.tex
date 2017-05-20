@@ -8,12 +8,12 @@
 % Information
 \renewcommand{\firstname}{Elie}
 \renewcommand{\lastname}{Génard}
-\renewcommand{\subtitle}{CV pour un poste d'ingénieur créatif}
+\renewcommand{\subtitle}{CV pour un poste de programmeur}
 \renewcommand{\phone}{06 xx xx xx xx}
 \renewcommand{\email}{xxxxxxxxxx@xxxx.xxx}
 \renewcommand{\adress}{xx xxx xxxxxxxxx}
 \renewcommand{\city}{xxxxx xxxxxxx xxx xxxxx}
-\renewcommand{\profession}{Ingénieur en physique et électronique}
+\renewcommand{\profession}{Programmeur}
 
 \linespread{1.2}
 
@@ -26,7 +26,8 @@
 	\begin{contact}[vcard=false]
 		\addinfo{Email}{\href{mailto:\email}{\email}}
 		\addinfo{Téléphone}{\phone}
-		\addinfo{Adresse}{\adress \\ \city}
+		%% \addinfo{Adresse}{\adress \\ \city}
+    \addinfo{Site web}{\href{https://elaye.github.io}{elaye.github.io}}
 		% \addinfo{}{\city}
 	\end{contact}
 
@@ -35,14 +36,15 @@
 \begin{body}
 	\experience
 		\begin{entry}
-			{2015 - 2016}{Développeur dans une agence digitale créative}{Londres}
-			{StinkDigital}
+			{2015 - 2017}{Développeur dans une agence digitale}{Londres}
+			{Stink Studios}
+      \textbf{Projet :} \href{http://www.stinkstudios.com/news/say-hello-to-rita-our-real-time-cloud-rendering-platform}{RITA (Rendering In The Air)}\\
+      ~~~~Logiciel de rendu de vidéos dynamiques en temps réel\\
+      \textbf{Projet :} visite virtuelle des studios d'Abbey Road - Google Cardboard : \href{https://www.stinkstudios.com/work/google-inside-abbey-road-cardboard}{Inside Abbey Road}\\
+      ~~~~Développement Unity\\
+      \textbf{Projet :} visite interactive des parcs nationaux des Etats-Unis : \href{http://g.co/nationalparks}{National Parks}\\
 			\textbf{Projet :} site web interactif pour le Google Cultural Institute : \href{https://performingarts.withgoogle.com/fr}{Google Performing Arts} \\
 			~~~~Développement d'un lecteur vidéo à 360$^{\circ}$
-			% \textbf{Projets :} Création de résumés vidéo scalables de documents culturels en utilisant\\
-			% un cube de données (projet international franco-mexicain)\\
-			% ~~~~Extraction et clustering de descripteurs de caractéristiques audiovisuels bas niveau\\
-			% ~~~~Programmation en C++
 		\end{entry}
 		\begin{entry}
 			{Mars-Juillet 2014}{Stage dans un laboratoire d'informatique}{Bordeaux}
@@ -67,10 +69,11 @@
 			\textit{2013-2014} Semestre Art, Science et Techonologie\\
 			\textit{HMI - Interfaces haptiques - Programmation pour la création interactivve}\\
 			\textbf{Projet :} Jonglage interactif avec un diabolo\\
-			~~~~Tracking des bras du jongleur et du diabolo avec une Kinect\\
-			~~~~Visualisation utilisant un système de particules qui réagit aux mouvements du jongleur\\
-			~~~~Génération sonore réalisée avec SuperCollider\\
-			~~~~{\itshape [~code disponible sur \href{https://github.com/elaye/AST\_diabolo\_particles}{https://github.com/elaye/AST\_diabolo\_particles}~]}
+      ~~~~Tracking du jongleur avec une Kinect et génération audiovisuelle
+			%% ~~~~Tracking des bras du jongleur et du diabolo avec une Kinect\\
+			%% ~~~~Visualisation utilisant un système de particules qui réagit aux mouvements du jongleur\\
+			%% ~~~~Génération sonore réalisée avec SuperCollider\\
+			%% ~~~~{\itshape [~code disponible sur \href{https://github.com/elaye/AST\_diabolo\_particles}{https://github.com/elaye/AST\_diabolo\_particles}~]}
 			\medskip\\
 
 			\textit{2012-2013} Physique et nanosciences\\
@@ -90,47 +93,42 @@
 			Physique et Mathématiques\\
 			Option Sciences de l'Ingénieur
 		\end{entry}
-		\begin{entry}
-			{2008}{Baccalauréat - Section S}{Barbezieux}
-			{Mention Bien}
-		\end{entry}
 
 \end{body}
 
 \begin{aside}
 
 	\begin{about}
-		\addinfo{Age:}{26}
+		\addinfo{Age:}{27}
 		\addinfo{Français:}{langue maternelle}
 		\addinfo{Anglais:}{courant}
+    \addinfo{Espagnol:}{basique}
 	\end{about}\noindent
 
+  \vspace{0.5cm}
 	\skills
 	
 	\begin{skillgroup}{Langages}
-		\skill{C++}{3}
-		\skill{Ruby}{3}
-		\skill{Java}{1}
+		\skill{C/C++}{3}
+    \skill{Haskell}{2}
+    \skill{Rust}{1}
 	\end{skillgroup}
 
 	\begin{skillgroup}{Web}
-		\skill{HTML5/CSS3}{3}
-		% \skill{CSS3}{3}
-		\skill{Javascript}{2}
-		\skill{Ruby on Rails}{2}
-		\skill{Node.js}{2}
+		\skill{HTML}{4}
+		\skill{CSS}{4}
+		\skill{Javascript}{4}
 	\end{skillgroup}
 
 	\begin{skillgroup}{OS}
 		\skill{GNU/Linux}{3}
-		\skill{OS X}{2}
+		\skill{OS X}{3}
 		\skill{Windows}{2}
 	\end{skillgroup}
 
-	\begin{skillgroup}{Misc}
+	\begin{skillgroup}{Divers}
 		\skill{openFrameworks}{4}
-		\skill{\LaTeX}{4}
-		\skill{Photoshop}{3}
+		\skill{\LaTeX}{3}
 	\end{skillgroup}
 
 	\skillscaption
