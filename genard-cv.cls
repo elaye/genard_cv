@@ -11,6 +11,7 @@
 \LoadClass{article}
 
 \RequirePackage{iflang}
+\RequirePackage[utf8]{inputenc}
 
 \pagestyle{empty}
 
@@ -185,7 +186,7 @@
 %%%%%%%%%
 
 \newenvironment{about}{%
-	\iconsection{\faInfoSign}{\IfLanguageName{french}{Informations}{About}}%
+	\iconsection{\faInfoCircle}{\IfLanguageName{french}{Informations}{About}}%
 	\vspace{2mm}
 	% \def\arraystretch{0.8}%
 	\newcommand{\addinfo}[2]{%
@@ -343,7 +344,7 @@ END:VCARD
 	\begin{tabular}[t]{@{}|ll}%
 }{%
     \end{tabular}%
-    \vspace{0.5cm}%
+    \vspace{0.3cm}%
 }
 
 \RequirePackage{colortbl}
