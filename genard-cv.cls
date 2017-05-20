@@ -344,7 +344,7 @@ END:VCARD
 	\begin{tabular}[t]{@{}|ll}%
 }{%
     \end{tabular}%
-    \vspace{1cm}%
+    \vspace{0.5cm}%
 }
 
 \RequirePackage{colortbl}
