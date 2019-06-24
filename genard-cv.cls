@@ -123,17 +123,17 @@
 	}
 
 	% Name
-	\begin{textblock}{8}(4, 1)	
+	\begin{textblock}{8}(4, 0.5)	
 			\centering
 			\medskip
 			{\Huge\bfseries \firstname~\lastname\\}
-			\bigskip\bigskip
+			\bigskip
 			{\Large \subtitle}
 	\end{textblock}
 
 	% Profession
 	\begin{tikzpicture}[remember picture,overlay]
-		\node[yshift=-5.5cm] at (current page.north west){
+		\node[yshift=-4.5cm] at (current page.north west){
 			\begin{tikzpicture}[remember picture, overlay]
 				\fill[black!3] (0,0) rectangle (21cm,0.7cm);
 				\node[xshift=2.5cm, yshift=0.35cm](d){\scriptsize \IfLanguageName{french}{Mis à jour le}{Updated on} {\scriptsize\today}};
@@ -147,7 +147,7 @@
 
 
 	% Contact
-	\begin{textblock}{8.0}(11, 5)
+	\begin{textblock}{8.0}(11, 0)
 }{%
 	\end{textblock}
 }
@@ -166,15 +166,15 @@
 	\let\oldarraystretch\arraystretch
 
 	\newcommand{\dispvcard}{
-		\begin{textblock}{3}(17,1)
+		\begin{textblock}{3}(17,0)
 			\ifthenelse{\equal{vcard=true}{#1}}{\vcard}{}
 		\end{textblock}
 	}
 
 	\ifthenelse{\equal{vcard=true}{#1}}{
-		\begin{textblock}{6}(11,0.5)
+		\begin{textblock}{6}(11,0)
 	}{
-		\begin{textblock}{6}(15,1)
+		\begin{textblock}{6}(15,0.5)
 	}
 }{%
 	\end{textblock}
@@ -207,7 +207,7 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
-	\begin{textblock}{5}(15.5, 5.2)
+	\begin{textblock}{5}(15.5, 4.2)
 	\begin{flushleft}
 }{%
 	\end{flushleft}
@@ -229,7 +229,7 @@
 		\iconsection{\faBook}{\IfLanguageName{french}{Formation}{Education}}
 	}
 
-	\begin{textblock}{14.5}(0.5, 5.2)
+	\begin{textblock}{14.5}(0.5, 4.2)
 	\begin{flushleft}
 }{%
 	\end{flushleft}
