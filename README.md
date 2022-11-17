@@ -1,4 +1,9 @@
-`xelatex` must be installed.
+## Depencencies
+`xelatex` must be installed:
+
+`sudo apt install texlive-xetex`
+
+## Build
 
 Run `make` to build the output pdf.
 
